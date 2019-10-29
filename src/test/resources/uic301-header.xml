@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<header identifier="1411A0000" railUnionCompiling="0X87" railUnionReceiving="1X85" period="x" noOfDetailPhrases="y"
+        noOfTotalPhrases="z" lineNo="-1" errorCount="6">
+	<field-error field="noOfDetailPhrases" error="Expected exactly 6 digit(s), but was: 'y'" />
+	<field-error field="railUnionReceiving" error="Wrong RICS code (1X85)" />
+	<field-error field="noOfTotalPhrases" error="Expected exactly 6 digit(s), but was: 'z'" />
+	<field-error field="railUnionCompiling" error="Wrong RICS code (0X87)" />
+	<field-error field="identifier"	error="Expected one of [141110000, 142110000, 143110000], but was: 1411A0000" />
+	<field-error field="period"	error="Expected 'YYMMPP', but was: 'x'" />
+</header>

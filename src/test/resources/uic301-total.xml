@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<total identifier="1411A0000" railUnionCompiling="0X87" railUnionReceiving="1X85" period="a" reserved="b"
+    statementCurrency="c" statementPeriod="d" grossDebit="e" grossCredit="f" amountCommissionDebited="g"
+    amountCommissionCredited="h" debitCreditBalance="i" netBalanceAmount="j" parsedLineNo="-1" errorCount="13">
+	<field-error field="grossCredit" error="Expected exactly 12 digit(s), but was: 'f'" />
+	<field-error field="amountCommissionDebited" error="Expected exactly 11 digit(s), but was: 'g'" />
+	<field-error field="identifier"	error="Expected one of [141310000, 142310000, 143310000], but was: 1411A0000" />
+	<field-error field="statementPeriod" error="Expected exactly 2 digit(s), but was: 'd'" />
+	<field-error field="amountCommissionCredited" error="Expected exactly 11 digit(s), but was: 'h'" />
+	<field-error field="railUnionReceiving" error="Wrong RICS code (1X85)" />
+	<field-error field="debitCreditBalance"	error="Only '1' or '2' allowed, but was: 'i'" />
+	<field-error field="reserved" error="Expected only 1 zero(s), but was: 'b'" />
+	<field-error field="statementCurrency" error="Expected only three uppercase characters for currency, but was 'c'" />
+	<field-error field="netBalanceAmount" error="Expected exactly 12 digit(s), but was: 'j'" />
+	<field-error field="period" error="Expected 'YYMMPP', but was: 'a'" />
+	<field-error field="grossDebit" error="Expected exactly 12 digit(s), but was: 'e'" />
+	<field-error field="railUnionCompiling"	error="Wrong RICS code (0X87)" />
+</total>

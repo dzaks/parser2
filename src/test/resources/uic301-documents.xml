@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<documents errorCount="21">
+	<document errorCount="21">
+		<header identifier="1411A0000" railUnionCompiling="0X87" railUnionReceiving="1X85" period="x" noOfDetailPhrases="y"
+			noOfTotalPhrases="z" lineNo="-1" errorCount="6">
+			<field-error field="period"	error="Expected 'YYMMPP', but was: 'x'" />
+			<field-error field="identifier"	error="Expected one of [141110000, 144110000, 142110000, 145110000, 143110000], but was: 1411A0000" />
+			<field-error field="noOfTotalPhrases" error="Expected exactly 6 digit(s), but was: 'z'" />
+			<field-error field="railUnionCompiling" error="Wrong RICS code (0X87)" />
+			<field-error field="railUnionReceiving" error="Wrong RICS code (1X85)" />
+			<field-error field="noOfDetailPhrases" error="Expected exactly 6 digit(s), but was: 'y'" />
+		</header>
+		<details errorCount="2">
+	        <detail-g4 _1="1411A0000" _2="0087" _3="1185" _4="171100"
+	            _5="0" _6="07" _7="0" _8="1" _9="00000" _10-1="1185" _10-2="0000000"
+	            _11-1="EUR" _11-2="01" _12="001" _13="00012100" _14="09213" _15="000"
+	            _16="171124" _17-1="0087" _17-2="71304" _18="0" _19-1="1185"
+	            _19-2="00010" _20="0" _21="00871898023142" _22="00000" _23="171122"
+	            _24="00001" _25="0" _26="0000012100" _27="0000000000" _28="0087"
+	            _29="00" _30="10001" _31="1" _32-1="0087" _32-2="00271" _33="11"
+	            _34="00012100" _35="0000000000" _36="0000012100" _37="1000"
+	            _38="0000001210" _39="0000000000" _40a="000" _40b="CH" _40c="x"
+	            no="-1" errorCount="2">
+                <field-error field="serviceBrandCode" error="Expected exactly 4 digit(s), but was: 'x'" />
+                <field-error field="identifier" error="Expected one of [141210000, 144210000], but was: 1411A0000" />
+	        </detail-g4>
+		</details>
+		<totals>
+			<total identifier="1411A0000" railUnionCompiling="0X87"	railUnionReceiving="1X85" period="a" reserved="b"
+				statementCurrency="c" statementPeriod="d" grossDebit="e" grossCredit="f" amountCommissionDebited="g"
+				amountCommissionCredited="h" debitCreditBalance="i"	netBalanceAmount="j" lineNo="-1" errorCount="13">
+				<field-error field="statementCurrency" error="Expected only three uppercase characters for currency, but was 'c'" />
+				<field-error field="grossDebit" error="Expected exactly 12 digit(s), but was: 'e'" />
+				<field-error field="period" error="Expected 'YYMMPP', but was: 'a'" />
+				<field-error field="netBalanceAmount" error="Expected exactly 12 digit(s), but was: 'j'" />
+				<field-error field="identifier" error="Expected one of [141310000, 144310000, 142310000, 145310000, 143310000], but was: 1411A0000" />
+				<field-error field="railUnionReceiving" error="Wrong RICS code (1X85)" />
+				<field-error field="debitCreditBalance" error="Only '1' or '2' allowed, but was: 'i'" />
+				<field-error field="amountCommissionDebited" error="Expected exactly 11 digit(s), but was: 'g'" />
+				<field-error field="reserved" error="Expected only 1 zero(s), but was: 'b'" />
+				<field-error field="statementPeriod" error="Expected exactly 2 digit(s), but was: 'd'" />
+				<field-error field="amountCommissionCredited" error="Expected exactly 11 digit(s), but was: 'h'" />
+				<field-error field="grossCredit" error="Expected exactly 12 digit(s), but was: 'f'" />
+				<field-error field="railUnionCompiling"	error="Wrong RICS code (0X87)" />
+			</total>
+		</totals>
+	</document>
+</documents>
