@@ -418,6 +418,11 @@ public final class Uic301Total implements ParsedLineItem, Sealable {
     public int getParsedLineNo() {
         return parsedLineNo;
     }
+    
+
+    public void setRailUnionCompiling(String railUnionCompiling) {
+        this.railUnionCompiling = railUnionCompiling;
+    }
 
     @Override
     public int hashCode() {
