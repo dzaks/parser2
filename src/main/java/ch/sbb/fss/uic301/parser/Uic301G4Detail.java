@@ -3,6 +3,7 @@ package ch.sbb.fss.uic301.parser;
 import static ch.sbb.fss.uic301.parser.Uic301Utils.bigDecimalOf;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
@@ -51,6 +52,8 @@ public final class Uic301G4Detail implements Uic301Detail, Sealable {
     private static final String G4_DB = "144210000";
 
     private transient boolean sealed = false;
+    
+    private transient List<String> sealedAttributes = new ArrayList<String>();
 
     @XmlAttribute(name = "errorCount")
     private Integer errorCount;
@@ -1246,243 +1249,244 @@ public final class Uic301G4Detail implements Uic301Detail, Sealable {
     }
 
     public final void setIdentifier(String identifier) {
-        assertNotSealed();
+        assertNotSealedAttribute("identifier");
         this.identifier = identifier;
     }
 
     @Override
     public final void setRailUnionCompiling(String railUnionCompiling) {
-        assertNotSealed();
+        assertNotSealedAttribute("railUnionCompiling");
         this.railUnionCompiling = railUnionCompiling;
     }
 
     @Override
     public final void setRailUnionReceiving(String railUnionReceiving) {
-        assertNotSealed();
+        assertNotSealedAttribute("railUnionReceiving");
         this.railUnionReceiving = railUnionReceiving;
     }
 
     public final void setPeriod(String period) {
-        assertNotSealed();
+        assertNotSealedAttribute("period");
         this.period = period;
     }
 
     public final void setReserved1(String reserved1) {
-        assertNotSealed();
+        assertNotSealedAttribute("reserved1");
         this.reserved1 = reserved1;
     }
 
     public final void setTypeOfService(String typeOfService) {
-        assertNotSealed();
+        assertNotSealedAttribute("typeOfService");
         this.typeOfService = typeOfService;
     }
 
     @Override
     public final void setTypeOfTransaction(String typeOfTransaction) {
-        assertNotSealed();
+        assertNotSealedAttribute("typeOfTransaction");
         this.typeOfTransaction = typeOfTransaction;
     }
 
     public final void setDistributionChannel(String distributionChannel) {
-        assertNotSealed();
+        assertNotSealedAttribute("distributionChannel");
         this.distributionChannel = distributionChannel;
     }
 
     public final void setCodeIssuingOffice(String codeIssuingOffice) {
-        assertNotSealed();
+        assertNotSealedAttribute("codeIssuingOffice");
         this.codeIssuingOffice = codeIssuingOffice;
     }
 
     public final void setRequestingTerminalRU(String requestingTerminalRU) {
-        assertNotSealed();
+        assertNotSealedAttribute("requestingTerminalRU");
         this.requestingTerminalRU = requestingTerminalRU;
     }
 
     public final void setRequestingTerminalNo(String requestingTerminalNo) {
-        assertNotSealed();
+        assertNotSealedAttribute("requestingTerminalNo");
         this.requestingTerminalNo = requestingTerminalNo;
     }
 
     public final void setStatementCurrency(String statementCurrency) {
-        assertNotSealed();
+        assertNotSealedAttribute("statementCurrency");
         this.statementCurrency = statementCurrency;
     }
 
     public final void setStatementPeriod(String statementPeriod) {
-        assertNotSealed();
+        assertNotSealedAttribute("statementPeriod");
         this.statementPeriod = statementPeriod;
     }
 
     public final void setClassOrCategory(String classOrCategory) {
-        assertNotSealed();
+        assertNotSealedAttribute("classOrCategory");
         this.classOrCategory = classOrCategory;
     }
 
     public final void setUnitPrice(String unitPrice) {
-        assertNotSealed();
+        assertNotSealedAttribute("unitPrice");
         this.unitPrice = unitPrice;
     }
 
     public final void setTrainNumber(String trainNumber) {
-        assertNotSealed();
+        assertNotSealedAttribute("trainNumber");
         this.trainNumber = trainNumber;
     }
 
     public final void setCoachNumber(String coachNumber) {
-        assertNotSealed();
+        assertNotSealedAttribute("coachNumber");
         this.coachNumber = coachNumber;
     }
 
     public final void setDayOfTravel(String dayOfTravel) {
-        assertNotSealed();
+        assertNotSealedAttribute("dayOfTravel");
         this.dayOfTravel = dayOfTravel;
     }
 
     public final void setDepartureLocationCountry(String departureLocationCountry) {
-        assertNotSealed();
+        assertNotSealedAttribute("departureLocationCountry");
         this.departureLocationCountry = departureLocationCountry;
     }
 
     public final void setDepartureLocationStation(String departureLocationStation) {
-        assertNotSealed();
+        assertNotSealedAttribute("departureLocationStation");
         this.departureLocationStation = departureLocationStation;
     }
 
     public final void setReserved2(String reserved2) {
-        assertNotSealed();
+        assertNotSealedAttribute("reserved2");
         this.reserved2 = reserved2;
     }
 
     public final void setDestinationLocationCountry(String destinationLocationCountry) {
-        assertNotSealed();
+        assertNotSealedAttribute("destinationLocationCountry");
         this.destinationLocationCountry = destinationLocationCountry;
     }
 
     public final void setDestinationLocationStation(String destinationLocationStation) {
-        assertNotSealed();
+        assertNotSealedAttribute("destinationLocationStation");
         this.destinationLocationStation = destinationLocationStation;
     }
 
     public final void setReserved3(String reserved3) {
-        assertNotSealed();
+        assertNotSealedAttribute("reserved3");
         this.reserved3 = reserved3;
     }
 
     public final void setReferenceNumber(String referenceNumber) {
-        assertNotSealed();
+        assertNotSealedAttribute("referenceNumber");
         this.referenceNumber = referenceNumber;
     }
 
     public final void setDialogueNumber(String dialogueNumber) {
-        assertNotSealed();
+        assertNotSealedAttribute("dialogueNumber");
         this.dialogueNumber = dialogueNumber;
     }
 
     @Override
     public final void setTransactionDate(String transactionDate) {
+        assertNotSealedAttribute("transactionDate");
         this.transactionDate = transactionDate;
     }
 
     public final void setNumberOfServices(String numberOfServices) {
-        assertNotSealed();
+        assertNotSealedAttribute("numberOfServices");
         this.numberOfServices = numberOfServices;
     }
 
     public final void setAdjustment(String adjustment) {
-        assertNotSealed();
+        assertNotSealedAttribute("adjustment");
         this.adjustment = adjustment;
     }
 
     public final void setGrossAmountToBeDebited(String grossAmountToBeDebited) {
-        assertNotSealed();
+        assertNotSealedAttribute("grossAmountToBeDebited");
         this.grossAmountToBeDebited = grossAmountToBeDebited;
     }
 
     public final void setGrossAmountToBeCredited(String grossAmountToBeCredited) {
-        assertNotSealed();
+        assertNotSealedAttribute("grossAmountToBeCredited");
         this.grossAmountToBeCredited = grossAmountToBeCredited;
     }
 
     public final void setServiceProvidingRU(String serviceProvidingRU) {
-        assertNotSealed();
+        assertNotSealedAttribute("xx");
         this.serviceProvidingRU = serviceProvidingRU;
     }
 
     public final void setAfterSalesFeeSharePercentage(String afterSalesFeeSharePercentage) {
-        assertNotSealed();
+        assertNotSealedAttribute("afterSalesFeeSharePercentage");
         this.afterSalesFeeSharePercentage = afterSalesFeeSharePercentage;
     }
 
     public final void setTariffCode(String tariffCode) {
-        assertNotSealed();
+        assertNotSealedAttribute("tariffCode");
         this.tariffCode = tariffCode;
     }
 
     public final void setTypeOfJourney(String typeOfJourney) {
-        assertNotSealed();
+        assertNotSealedAttribute("typeOfJourney");
         this.typeOfJourney = typeOfJourney;
     }
 
     @Override
     public final void setPrimaryRouteFirstSectionRU(String primaryRouteFirstSectionRU) {
-        assertNotSealed();
+        assertNotSealedAttribute("primaryRouteFirstSectionRU");
         this.primaryRouteFirstSectionRU = primaryRouteFirstSectionRU;
     }
 
     public final void setPrimaryRouteFirstSectionSerialNo(String primaryRouteFirstSectionSerialNo) {
-        assertNotSealed();
+        assertNotSealedAttribute("primaryRouteFirstSectionSerialNo");
         this.primaryRouteFirstSectionSerialNo = primaryRouteFirstSectionSerialNo;
     }
 
     public final void setPassengerCatergory(String passengerCatergory) {
-        assertNotSealed();
+        assertNotSealedAttribute("passengerCatergory");
         this.passengerCatergory = passengerCatergory;
     }
 
     public final void setAmountUnitShare(String amountUnitShare) {
-        assertNotSealed();
+        assertNotSealedAttribute("amountUnitShare");
         this.amountUnitShare = amountUnitShare;
     }
 
     public final void setGrossAmountToBeDebitedTheServiceProvidingRU(String grossAmountToBeDebitedTheServiceProvidingRU) {
-        assertNotSealed();
+        assertNotSealedAttribute("grossAmountToBeDebitedTheServiceProvidingRU");
         this.grossAmountToBeDebitedTheServiceProvidingRU = grossAmountToBeDebitedTheServiceProvidingRU;
     }
 
     public final void setGrossAmountToBeCreditedTheServiceProvidingRU(String grossAmountToBeCreditedTheServiceProvidingRU) {
-        assertNotSealed();
+        assertNotSealedAttribute("grossAmountToBeCreditedTheServiceProvidingRU");
         this.grossAmountToBeCreditedTheServiceProvidingRU = grossAmountToBeCreditedTheServiceProvidingRU;
     }
 
     public final void setPercentageCommissionRateOfServiceProvidingRU(String percentageCommissionRateOfServiceProvidingRU) {
-        assertNotSealed();
+        assertNotSealedAttribute("percentageCommissionRateOfServiceProvidingRU");
         this.percentageCommissionRateOfServiceProvidingRU = percentageCommissionRateOfServiceProvidingRU;
     }
 
     public final void setAmountOfCommissionToBeDebitedTheServiceProvidingRU(
             String amountOfCommissionToBeDebitedTheServiceProvidingRU) {
-        assertNotSealed();
+        assertNotSealedAttribute("amountOfCommissionToBeDebitedTheServiceProvidingRU");
         this.amountOfCommissionToBeDebitedTheServiceProvidingRU = amountOfCommissionToBeDebitedTheServiceProvidingRU;
     }
 
     public final void setAmountOfCommissionToBeCreditedTheServiceProvidingRU(
             String amountOfCommissionToBeCreditedTheServiceProvidingRU) {
-        assertNotSealed();
+        assertNotSealedAttribute("amountOfCommissionToBeCreditedTheServiceProvidingRU");
         this.amountOfCommissionToBeCreditedTheServiceProvidingRU = amountOfCommissionToBeCreditedTheServiceProvidingRU;
     }
 
     public final void setReserved4(String reserved4) {
-        assertNotSealed();
+        assertNotSealedAttribute("reserved4");
         this.reserved4 = reserved4;
     }
 
     public final void setCountryCode(String countryCode) {
-        assertNotSealed();
+        assertNotSealedAttribute("countryCode");
         this.countryCode = countryCode;
     }
 
     public final void setServiceBrandCode(String serviceBrandCode) {
-        assertNotSealed();
+        assertNotSealedAttribute("serviceBrandCode");
         this.serviceBrandCode = serviceBrandCode;
     }
 
@@ -1985,6 +1989,16 @@ public final class Uic301G4Detail implements Uic301Detail, Sealable {
         if (sealed) {
             throw new IllegalStateException("The class is sealed. No more changes are allowed.");
         }
+    }
+    
+    private void assertNotSealedAttribute(String name) {
+        if (sealed) {
+            throw new IllegalStateException("The class is sealed. No more changes are allowed.");
+        }
+        if (this.sealedAttributes.contains(name)) {
+            throw new IllegalStateException("The Attribute is sealed. No more changes are allowed.");
+        }
+        sealedAttributes.add(name);
     }
 
     /**
