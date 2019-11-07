@@ -163,8 +163,12 @@ public interface Uic301Detail extends ParsedLineItem {
     public String getCoachNumber();
 
     public String getDayOfTravel();
+    
+    public String getDepartureLocationRU();
 
     public String getDepartureLocationStation();
+    
+    public String getDestinationLocationRU();
 
     public String getDestinationLocationStation();
 
@@ -229,16 +233,16 @@ public interface Uic301Detail extends ParsedLineItem {
     public BigDecimal getAmountOfCommissionToBeDebitedTheServiceProvidingRUValue();
 
     public BigDecimal getAmountOfCommissionToBeCreditedTheServiceProvidingRUValue();
-
-    public void setRailUnionCompiling(String railUnionCompiling);
-
-    public void setRailUnionReceiving(String railUnionReceiving);
-
-    public void setTransactionDate(String transactionDate);
-
-    public void setTypeOfTransaction(String typeOfTransaction);
-
-    public void setPrimaryRouteFirstSectionRU(String primaryRouteFirstSectionRU);
+//
+//    public void setRailUnionCompiling(String railUnionCompiling);
+//
+//    public void setRailUnionReceiving(String railUnionReceiving);
+//
+//    public void setTransactionDate(String transactionDate);
+//
+//    public void setTypeOfTransaction(String typeOfTransaction);
+//
+//    public void setPrimaryRouteFirstSectionRU(String primaryRouteFirstSectionRU);
 
 
 }

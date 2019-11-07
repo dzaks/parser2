@@ -424,6 +424,10 @@ public final class Uic301Total implements ParsedLineItem, Sealable {
         this.railUnionCompiling = railUnionCompiling;
     }
 
+    public void setRailUnionReceiving(String railUnionReceiving) {
+        this.railUnionReceiving = railUnionReceiving;
+    }
+    
     @Override
     public int hashCode() {
         final int prime = 31;

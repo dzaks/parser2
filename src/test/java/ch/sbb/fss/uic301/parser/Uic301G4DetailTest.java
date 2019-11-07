@@ -51,10 +51,10 @@ public class Uic301G4DetailTest {
         final String trainNumber = "09213";
         final String coachNumber = "000";
         final String dayOfTravel = "171124";
-        final String departureLocationCountry = "0087";
+        final String departureLocationRU = "0087";
         final String departureLocationStation = "71304";
         final String reserved2 = "0";
-        final String destinationLocationCountry = "1185";
+        final String destinationLocationRU = "1185";
         final String destinationLocationStation = "00010";
         final String reserved3 = "0";
         final String referenceNumber = "00871898023142";
@@ -87,8 +87,8 @@ public class Uic301G4DetailTest {
                 typeOfService, typeofTransaction, distributionChannel,
                 codeIssuingOffice, requestingTerminalRU, requestingTerminalNo,
                 statementCurrency, statementPeriod, classOrCategory, unitPrice,
-                trainNumber, coachNumber, dayOfTravel, departureLocationCountry,
-                departureLocationStation, reserved2, destinationLocationCountry,
+                trainNumber, coachNumber, dayOfTravel, departureLocationRU,
+                departureLocationStation, reserved2, destinationLocationRU,
                 destinationLocationStation, reserved3, referenceNumber,
                 dialogueNumber, transactionDate, numberOfServices, adjustment,
                 grossAmountToBeDebited, grossAmountToBeCredited,
@@ -142,13 +142,13 @@ public class Uic301G4DetailTest {
         assertThat(testee.getTrainNumber()).isEqualTo(trainNumber);
         assertThat(testee.getCoachNumber()).isEqualTo(coachNumber);
         assertThat(testee.getDayOfTravel()).isEqualTo(dayOfTravel);
-        assertThat(testee.getDepartureLocationCountry())
-                .isEqualTo(departureLocationCountry);
+        assertThat(testee.getDepartureLocationRU())
+                .isEqualTo(departureLocationRU);
         assertThat(testee.getDepartureLocationStation())
                 .isEqualTo(departureLocationStation);
         assertThat(testee.getReserved2()).isEqualTo(reserved2);
-        assertThat(testee.getDestinationLocationCountry())
-                .isEqualTo(destinationLocationCountry);
+        assertThat(testee.getDestinationLocationRU())
+                .isEqualTo(destinationLocationRU);
         assertThat(testee.getDestinationLocationStation())
                 .isEqualTo(destinationLocationStation);
         assertThat(testee.getReserved3()).isEqualTo(reserved3);
@@ -619,7 +619,7 @@ public class Uic301G4DetailTest {
     }
 
     @Test
-    public void testInvalidDepartureLocationCountry() {
+    public void testInvalidDepartureLocationRU() {
 
         // TEST
         final Set<ConstraintViolation<Uic301G4Detail>> violations = VALIDATOR
@@ -634,7 +634,7 @@ public class Uic301G4DetailTest {
                         "CH", "0000", -1));
 
         // VERIFY
-        assertSingleViolation(violations, "departureLocationCountry",
+        assertSingleViolation(violations, "departureLocationRU",
                 "Expected exactly 4 digit(s), but was: 'x'");
 
     }
@@ -682,7 +682,7 @@ public class Uic301G4DetailTest {
     }
 
     @Test
-    public void testInvalidDestinationLocationCountry() {
+    public void testInvalidDestinationLocationRU() {
 
         // TEST
         final Set<ConstraintViolation<Uic301G4Detail>> violations = VALIDATOR
@@ -697,7 +697,7 @@ public class Uic301G4DetailTest {
                         "CH", "0000", -1));
 
         // VERIFY
-        assertSingleViolation(violations, "destinationLocationCountry",
+        assertSingleViolation(violations, "destinationLocationRU",
                 "Expected exactly 4 digit(s), but was: 'x'");
 
     }
@@ -1318,10 +1318,10 @@ public class Uic301G4DetailTest {
         final String trainNumber = "09213";
         final String coachNumber = "000";
         final String dayOfTravel = "171124";
-        final String departureLocationCountry = "0087";
+        final String departureLocationRU = "0087";
         final String departureLocationStation = "71304";
         final String reserved2 = "0";
-        final String destinationLocationCountry = "1185";
+        final String destinationLocationRU = "1185";
         final String destinationLocationStation = "00010";
         final String reserved3 = "0";
         final String referenceNumber = "00871898023142";
@@ -1354,8 +1354,8 @@ public class Uic301G4DetailTest {
                 typeOfService, typeofTransaction, distributionChannel,
                 codeIssuingOffice, requestingTerminalRU, requestingTerminalNo,
                 statementCurrency, statementPeriod, classOrCategory, unitPrice,
-                trainNumber, coachNumber, dayOfTravel, departureLocationCountry,
-                departureLocationStation, reserved2, destinationLocationCountry,
+                trainNumber, coachNumber, dayOfTravel, departureLocationRU,
+                departureLocationStation, reserved2, destinationLocationRU,
                 destinationLocationStation, reserved3, referenceNumber,
                 dialogueNumber, transactionDate, numberOfServices, adjustment,
                 grossAmountToBeDebited, grossAmountToBeCredited,
@@ -1396,10 +1396,10 @@ public class Uic301G4DetailTest {
         final String trainNumber = "09213";
         final String coachNumber = "000";
         final String dayOfTravel = "171124";
-        final String departureLocationCountry = "0087";
+        final String departureLocationRU = "0087";
         final String departureLocationStation = "71304";
         final String reserved2 = "0";
-        final String destinationLocationCountry = "1185";
+        final String destinationLocationRU = "1185";
         final String destinationLocationStation = "00010";
         final String reserved3 = "0";
         final String referenceNumber = "00871898023142";
@@ -1432,8 +1432,8 @@ public class Uic301G4DetailTest {
                 typeOfService, typeofTransaction, distributionChannel,
                 codeIssuingOffice, requestingTerminalRU, requestingTerminalNo,
                 statementCurrency, statementPeriod, classOrCategory, unitPrice,
-                trainNumber, coachNumber, dayOfTravel, departureLocationCountry,
-                departureLocationStation, reserved2, destinationLocationCountry,
+                trainNumber, coachNumber, dayOfTravel, departureLocationRU,
+                departureLocationStation, reserved2, destinationLocationRU,
                 destinationLocationStation, reserved3, referenceNumber,
                 dialogueNumber, transactionDate, numberOfServices, adjustment,
                 grossAmountToBeDebited, grossAmountToBeCredited,

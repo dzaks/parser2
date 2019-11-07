@@ -368,8 +368,8 @@ public final class Uic301G5Detail implements Uic301Detail, Sealable {
      * [#19(1), 4 characters, Mandatory]<br>
      */
     @Label("Departure location RU code")
-    @ShortLabel("DEPCO")
-    @Tooltip("Departure location RU code, with preceding zeroes. [19(1)]")
+    @ShortLabel("DEPRU")
+    @Tooltip("Departure location RU code. [19(1)]")
     @TableColumn(pos = 20, width = 50)
     @NotNull
     @FixedLenDigitsStr(4)
@@ -402,7 +402,7 @@ public final class Uic301G5Detail implements Uic301Detail, Sealable {
      * [#21(1), 4 characters, Mandatory]<br>
      */
     @Label("Destination location RU  code")
-    @ShortLabel("DESCO")
+    @ShortLabel("DESRU")
     @Tooltip("Destination location RU code [21(1)]")
     @TableColumn(pos = 22, width = 50)
     @NotNull
@@ -1027,7 +1027,8 @@ public final class Uic301G5Detail implements Uic301Detail, Sealable {
     public String getDayOfTravel() {
         return dayOfTravel;
     }
-
+    
+    @Override
     public String getDepartureLocationRU() {
         return departureLocationRU;
     }
@@ -1041,6 +1042,7 @@ public final class Uic301G5Detail implements Uic301Detail, Sealable {
         return reserved3;
     }
 
+    @Override
     public String getDestinationLocationRU() {
         return destinationLocationRU;
     }
@@ -1195,13 +1197,12 @@ public final class Uic301G5Detail implements Uic301Detail, Sealable {
         this.identifier = identifier;
     }
 
-    @Override
     public final void setRailUnionCompiling(String railUnionCompiling) {
         assertNotSealedAttribute("railUnionCompiling");
         this.railUnionCompiling = railUnionCompiling;
     }
 
-    @Override
+
     public final void setRailUnionReceiving(String railUnionReceiving) {
         assertNotSealedAttribute("railUnionReceiving");
         this.railUnionReceiving = railUnionReceiving;
@@ -1222,7 +1223,6 @@ public final class Uic301G5Detail implements Uic301Detail, Sealable {
         this.typeOfService = typeOfService;
     }
 
-    @Override
     public final void setTypeOfTransaction(String typeOfTransaction) {
         assertNotSealedAttribute("typeOfTransaction");
         this.typeOfTransaction = typeOfTransaction;
@@ -1338,7 +1338,6 @@ public final class Uic301G5Detail implements Uic301Detail, Sealable {
         this.dialogueNumber = dialogueNumber;
     }
 
-    @Override
     public final void setTransactionDate(String transactionDate) {
         assertNotSealedAttribute("transactionDate");
         this.transactionDate = transactionDate;
@@ -1374,7 +1373,6 @@ public final class Uic301G5Detail implements Uic301Detail, Sealable {
         this.transactionRU = transactionRU;
     }
 
-    @Override
     public final void setPrimaryRouteFirstSectionRU(String primaryRouteFirstSectionRU) {
         assertNotSealedAttribute("primaryRouteFirstSectionRU");
         this.primaryRouteFirstSectionRU = primaryRouteFirstSectionRU;

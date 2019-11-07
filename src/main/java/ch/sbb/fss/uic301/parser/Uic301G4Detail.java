@@ -317,19 +317,19 @@ public final class Uic301G4Detail implements Uic301Detail, Sealable {
     @DateStr
     @XmlAttribute(name = "_16")
     private String dayOfTravel;
-
+    
     /**
      * Departure country code, with preceding zeroes.<br>
-     * [#17(1), 4 characters, Mandatory]<br>
+     * [#19(1), 4 characters, Mandatory]<br>
      */
-    @Label("Departure country code")
-    @ShortLabel("DEPCO")
-    @Tooltip("Departure country code, with preceding zeroes. [17(1)]")
+    @Label("Departure location RU code")
+    @ShortLabel("DEPRU")
+    @Tooltip("Departure location RU code, with preceding zeroes. [19(1)]")
     @TableColumn(pos = 18, width = 50)
     @NotNull
     @FixedLenDigitsStr(4)
     @XmlAttribute(name = "_17-1")
-    private String departureLocationCountry;
+    private String departureLocationRU;
 
     /**
      * Departure ENEE station code, with preceding zeroes.<br>
@@ -352,18 +352,19 @@ public final class Uic301G4Detail implements Uic301Detail, Sealable {
     @XmlAttribute(name = "_18")
     private String reserved2;
 
+   
     /**
      * Destination country code, with preceding zeroes.<br>
-     * [#19(1), 4 characters, Mandatory]<br>
+     * [#21(1), 4 characters, Mandatory]<br>
      */
-    @Label("Destination country code")
-    @ShortLabel("DESCO")
-    @Tooltip("Destination country code, with preceding zeroes. [19(1)]")
+    @Label("Destination location RU  code")
+    @ShortLabel("DESRU")
+    @Tooltip("Destination location RU code [21(1)]")
     @TableColumn(pos = 20, width = 50)
     @NotNull
     @FixedLenDigitsStr(4)
     @XmlAttribute(name = "_19-1")
-    private String destinationLocationCountry;
+    private String destinationLocationRU;
 
     /**
      * Destination ENEE station code, with preceding zeroes.<br>
@@ -799,10 +800,10 @@ public final class Uic301G4Detail implements Uic301Detail, Sealable {
         this.trainNumber = toCopy.trainNumber;
         this.coachNumber = toCopy.coachNumber;
         this.dayOfTravel = toCopy.dayOfTravel;
-        this.departureLocationCountry = toCopy.departureLocationCountry;
+        this.departureLocationRU = toCopy.departureLocationRU;
         this.departureLocationStation = toCopy.departureLocationStation;
         this.reserved2 = toCopy.reserved2;
-        this.destinationLocationCountry = toCopy.destinationLocationCountry;
+        this.destinationLocationRU = toCopy.destinationLocationRU;
         this.destinationLocationStation = toCopy.destinationLocationStation;
         this.reserved3 = toCopy.reserved3;
         this.referenceNumber = toCopy.referenceNumber;
@@ -837,8 +838,8 @@ public final class Uic301G4Detail implements Uic301Detail, Sealable {
             final String distributionChannel, final String codeIssuingOffice, final String requestingTerminalRU,
             final String requestingTerminalNo, final String statementCurrency, final String statementPeriod,
             final String classOrCategory, final String unitPrice, final String trainNumber, final String coachNumber,
-            final String dayOfTravel, final String departureLocationCountry, final String departureLocationStation,
-            final String reserved2, final String destinationLocationCountry, final String destinationLocationStation,
+            final String dayOfTravel, final String departureLocationRU, final String departureLocationStation,
+            final String reserved2, final String destinationLocationRU, final String destinationLocationStation,
             final String reserved3, final String referenceNumber, final String dialogueNumber,
             final String transactionDate, final String numberOfServices, final String adjustment,
             final String grossAmountToBeDebited, final String grossAmountToBeCredited, final String serviceProvidingRU,
@@ -870,10 +871,10 @@ public final class Uic301G4Detail implements Uic301Detail, Sealable {
         this.trainNumber = trainNumber;
         this.coachNumber = coachNumber;
         this.dayOfTravel = dayOfTravel;
-        this.departureLocationCountry = departureLocationCountry;
+        this.departureLocationRU = departureLocationRU;
         this.departureLocationStation = departureLocationStation;
         this.reserved2 = reserved2;
-        this.destinationLocationCountry = destinationLocationCountry;
+        this.destinationLocationRU = destinationLocationRU;
         this.destinationLocationStation = destinationLocationStation;
         this.reserved3 = reserved3;
         this.referenceNumber = referenceNumber;
@@ -1046,9 +1047,9 @@ public final class Uic301G4Detail implements Uic301Detail, Sealable {
     public String getDayOfTravel() {
         return dayOfTravel;
     }
-
-    public String getDepartureLocationCountry() {
-        return departureLocationCountry;
+    @Override
+    public String getDepartureLocationRU() {
+        return departureLocationRU;
     }
 
     @Override
@@ -1059,9 +1060,9 @@ public final class Uic301G4Detail implements Uic301Detail, Sealable {
     public String getReserved2() {
         return reserved2;
     }
-
-    public String getDestinationLocationCountry() {
-        return destinationLocationCountry;
+    @Override
+    public String getDestinationLocationRU() {
+        return destinationLocationRU;
     }
 
     @Override
@@ -1253,13 +1254,11 @@ public final class Uic301G4Detail implements Uic301Detail, Sealable {
         this.identifier = identifier;
     }
 
-    @Override
     public final void setRailUnionCompiling(String railUnionCompiling) {
         assertNotSealedAttribute("railUnionCompiling");
         this.railUnionCompiling = railUnionCompiling;
     }
 
-    @Override
     public final void setRailUnionReceiving(String railUnionReceiving) {
         assertNotSealedAttribute("railUnionReceiving");
         this.railUnionReceiving = railUnionReceiving;
@@ -1280,7 +1279,6 @@ public final class Uic301G4Detail implements Uic301Detail, Sealable {
         this.typeOfService = typeOfService;
     }
 
-    @Override
     public final void setTypeOfTransaction(String typeOfTransaction) {
         assertNotSealedAttribute("typeOfTransaction");
         this.typeOfTransaction = typeOfTransaction;
@@ -1341,9 +1339,9 @@ public final class Uic301G4Detail implements Uic301Detail, Sealable {
         this.dayOfTravel = dayOfTravel;
     }
 
-    public final void setDepartureLocationCountry(String departureLocationCountry) {
-        assertNotSealedAttribute("departureLocationCountry");
-        this.departureLocationCountry = departureLocationCountry;
+    public final void setDepartureLocationRU(String departureLocationRU) {
+        assertNotSealedAttribute("departureLocationRU");
+        this.departureLocationRU = departureLocationRU;
     }
 
     public final void setDepartureLocationStation(String departureLocationStation) {
@@ -1356,9 +1354,9 @@ public final class Uic301G4Detail implements Uic301Detail, Sealable {
         this.reserved2 = reserved2;
     }
 
-    public final void setDestinationLocationCountry(String destinationLocationCountry) {
-        assertNotSealedAttribute("destinationLocationCountry");
-        this.destinationLocationCountry = destinationLocationCountry;
+    public final void setDestinationLocationRU(String destinationLocationRU) {
+        assertNotSealedAttribute("destinationLocationRU");
+        this.destinationLocationRU = destinationLocationRU;
     }
 
     public final void setDestinationLocationStation(String destinationLocationStation) {
@@ -1381,7 +1379,6 @@ public final class Uic301G4Detail implements Uic301Detail, Sealable {
         this.dialogueNumber = dialogueNumber;
     }
 
-    @Override
     public final void setTransactionDate(String transactionDate) {
         assertNotSealedAttribute("transactionDate");
         this.transactionDate = transactionDate;
@@ -1427,7 +1424,6 @@ public final class Uic301G4Detail implements Uic301Detail, Sealable {
         this.typeOfJourney = typeOfJourney;
     }
 
-    @Override
     public final void setPrimaryRouteFirstSectionRU(String primaryRouteFirstSectionRU) {
         assertNotSealedAttribute("primaryRouteFirstSectionRU");
         this.primaryRouteFirstSectionRU = primaryRouteFirstSectionRU;
@@ -1507,9 +1503,9 @@ public final class Uic301G4Detail implements Uic301Detail, Sealable {
         result = prime * result + ((codeIssuingOffice == null) ? 0 : codeIssuingOffice.hashCode());
         result = prime * result + ((countryCode == null) ? 0 : countryCode.hashCode());
         result = prime * result + ((dayOfTravel == null) ? 0 : dayOfTravel.hashCode());
-        result = prime * result + ((departureLocationCountry == null) ? 0 : departureLocationCountry.hashCode());
+        result = prime * result + ((departureLocationRU == null) ? 0 : departureLocationRU.hashCode());
         result = prime * result + ((departureLocationStation == null) ? 0 : departureLocationStation.hashCode());
-        result = prime * result + ((destinationLocationCountry == null) ? 0 : destinationLocationCountry.hashCode());
+        result = prime * result + ((destinationLocationRU == null) ? 0 : destinationLocationRU.hashCode());
         result = prime * result + ((destinationLocationStation == null) ? 0 : destinationLocationStation.hashCode());
         result = prime * result + ((dialogueNumber == null) ? 0 : dialogueNumber.hashCode());
         result = prime * result + ((distributionChannel == null) ? 0 : distributionChannel.hashCode());
@@ -1638,11 +1634,11 @@ public final class Uic301G4Detail implements Uic301Detail, Sealable {
         } else if (!dayOfTravel.equals(other.dayOfTravel)) {
             return false;
         }
-        if (departureLocationCountry == null) {
-            if (other.departureLocationCountry != null) {
+        if (departureLocationRU == null) {
+            if (other.departureLocationRU != null) {
                 return false;
             }
-        } else if (!departureLocationCountry.equals(other.departureLocationCountry)) {
+        } else if (!departureLocationRU.equals(other.departureLocationRU)) {
             return false;
         }
         if (departureLocationStation == null) {
@@ -1652,11 +1648,11 @@ public final class Uic301G4Detail implements Uic301Detail, Sealable {
         } else if (!departureLocationStation.equals(other.departureLocationStation)) {
             return false;
         }
-        if (destinationLocationCountry == null) {
-            if (other.destinationLocationCountry != null) {
+        if (destinationLocationRU == null) {
+            if (other.destinationLocationRU != null) {
                 return false;
             }
-        } else if (!destinationLocationCountry.equals(other.destinationLocationCountry)) {
+        } else if (!destinationLocationRU.equals(other.destinationLocationRU)) {
             return false;
         }
         if (destinationLocationStation == null) {
@@ -2039,10 +2035,10 @@ public final class Uic301G4Detail implements Uic301Detail, Sealable {
             final String trainNumber = subStr.next("trainNumber", 5);
             final String coachNumber = subStr.next("coachNumber", 3);
             final String dayOfTravel = subStr.next("dayOfTravel", 6);
-            final String departureLocationCountry = subStr.next("departureLocationCountry", 4);
+            final String departureLocationRU = subStr.next("departureLocationRU", 4);
             final String departureLocationStation = subStr.next("departureLocationStation", 5);
             final String reserved2 = subStr.next("reserved2", 1);
-            final String destinationLocationCountry = subStr.next("destinationLocationCountry", 4);
+            final String destinationLocationRU = subStr.next("destinationLocationRU", 4);
             final String destinationLocationStation = subStr.next("destinationLocationStation", 5);
             final String reserved3 = subStr.next("reserved3", 1);
             final String referenceNumber = subStr.next("referenceNumber", 14);
@@ -2077,8 +2073,8 @@ public final class Uic301G4Detail implements Uic301Detail, Sealable {
             return new Uic301G4Detail(identifier, railUnionCompiling, railUnionReceiving, period, reserved1,
                     typeOfService, typeofTransaction, distributionChannel, codeIssuingOffice, requestingTerminalRU,
                     requestingTerminalNo, statementCurrency, statementPeriod, classOrCategory, unitPrice, trainNumber,
-                    coachNumber, dayOfTravel, departureLocationCountry, departureLocationStation, reserved2,
-                    destinationLocationCountry, destinationLocationStation, reserved3, referenceNumber, dialogueNumber,
+                    coachNumber, dayOfTravel, departureLocationRU, departureLocationStation, reserved2,
+                    destinationLocationRU, destinationLocationStation, reserved3, referenceNumber, dialogueNumber,
                     transactionDate, numberOfServices, adjustment, grossAmountToBeDebited, grossAmountToBeCredited,
                     serviceProvidingRU, afterSalesFeeSharePercentage, tariffCode, typeOfJourney,
                     primaryRouteFirstSectionRU, primaryRouteFirstSectionSerialNo, passengerCatergory, amountUnitShare,

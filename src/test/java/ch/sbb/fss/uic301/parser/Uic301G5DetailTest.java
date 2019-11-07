@@ -932,7 +932,7 @@ public class Uic301G5DetailTest {
         final String trainNumber = "09211";
         final String coachNumber = "000";
         final String dayOfTravel = "171223";
-        final String departureLocationCountry = "1185";
+        final String departureLocationRU = "1185";
         final String departureLocationStation = "00010";
         final String reserved3 = "0";
         final String destinationLocationRU = "1185";
@@ -960,7 +960,7 @@ public class Uic301G5DetailTest {
         return new Uic301G5Detail(identifier, railUnionCompiling, railUnionReceiving, period, reserved1, typeOfService,
                 typeofTransaction, distributionChannel, codeIssuingOffice, reserved2, countryCode, serviceBrandCode,
                 statementCurrency, statementPeriod, tariffCode, typeOfJourney, classOrCategory, amountUnitShare,
-                trainNumber, coachNumber, dayOfTravel, departureLocationCountry, departureLocationStation, reserved3,
+                trainNumber, coachNumber, dayOfTravel, departureLocationRU, departureLocationStation, reserved3,
                 destinationLocationRU, destinationLocationStation, typeIdentifier, numberIdentifiers,
                 dialogueNumber, transactionDate, numberOfServices, adjustment, grossAmountToBeDebited,
                 grossAmountToBeCredited, afterSalesPercentageFee, transactionRU, primaryRouteFirstSectionRU,
@@ -998,7 +998,7 @@ public class Uic301G5DetailTest {
         final String trainNumber = "09211";
         final String coachNumber = "000";
         final String dayOfTravel = "171223";
-        final String departureLocationCountry = "1185";
+        final String departureLocationRU = "1185";
         final String departureLocationStation = "00010";
         final String reserved3 = "0";
         final String destinationLocationRU = "1185";
@@ -1026,7 +1026,7 @@ public class Uic301G5DetailTest {
         return new Uic301G5Detail(identifier, railUnionCompiling, railUnionReceiving, period, reserved1, typeOfService,
                 typeofTransaction, distributionChannel, codeIssuingOffice, reserved2, countryCode, serviceBrandCode,
                 statementCurrency, statementPeriod, tariffCode, typeOfJourney, classOrCategory, amountUnitShare,
-                trainNumber, coachNumber, dayOfTravel, departureLocationCountry, departureLocationStation, reserved3,
+                trainNumber, coachNumber, dayOfTravel, departureLocationRU, departureLocationStation, reserved3,
                 destinationLocationRU, destinationLocationStation, typeIdentifier, numberIdentifiers,
                 dialogueNumber, transactionDate, numberOfServices, adjustment, grossAmountToBeDebited,
                 grossAmountToBeCredited, afterSalesPercentageFee, transactionRU, primaryRouteFirstSectionRU,
