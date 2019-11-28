@@ -8,4 +8,9 @@ pipelines:
         script:
           - chmod +x ./mvnw 
           - ./mvnw -U -B -s settings.xml clean deploy
+    - step:
+        name: Trigger following builds
+        script: 
+          - curl -X POST -is -u michael_schnell:$msc_pipeline_trigger_pw -H "Content-Type:application/json" https://api.bitbucket.org/2.0/repositories/lhlogistik/fss-uic301-patcher/pipelines/ -d '{"target":{"ref_type":"branch","type":"pipeline_ref_target", "ref_name":"master" } }'
+          - curl -X POST -is -u michael_schnell:$msc_pipeline_trigger_pw -H "Content-Type:application/json" https://api.bitbucket.org/2.0/repositories/lhlogistik/fss-uic301-export/pipelines/ -d '{"target":{"ref_type":"branch","type":"pipeline_ref_target", "ref_name":"master" } }'
 
