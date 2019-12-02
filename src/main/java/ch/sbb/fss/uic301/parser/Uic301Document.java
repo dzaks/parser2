@@ -221,7 +221,7 @@ public final class Uic301Document implements Sealable {
     public String toString() {
         return  getHeader().getIdentifierTypeFormatted() 
                 + " / " + getHeader().getRailUnionCompiling() 
-                    + " / " + getHeader().getPeriodTypeFormatted();// "Uic301Document [errorCount=" + getErrorCount() + "]";
+                    + " / " + getHeader().getPeriodTypeFormatted() +" [errors=" + getErrorCount() + "]";
     }
 
     @Override

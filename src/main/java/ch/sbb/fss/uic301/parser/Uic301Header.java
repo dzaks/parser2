@@ -28,7 +28,7 @@ import ch.sbb.fss.uic301.parser.constraints.RicsCodeStr;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = Uic301Header.TAG)
-public final class Uic301Header implements Sealable {
+public final class Uic301Header implements Sealable, Uic301DocumentItem {
 
     public static final String TAG = "header";
 

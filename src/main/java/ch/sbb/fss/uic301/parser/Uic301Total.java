@@ -38,7 +38,7 @@ import ch.sbb.fss.uic301.parser.constraints.RicsCodeStr;
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = Uic301Total.TAG)
-public final class Uic301Total implements ParsedLineItem, Sealable {
+public final class Uic301Total implements ParsedLineItem, Sealable, Uic301DocumentItem {
 
     public static final String TAG = "total";
 

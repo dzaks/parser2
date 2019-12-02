@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 /**
  * Common values for both G4 and G5 details.
  */
-public interface Uic301Detail extends ParsedLineItem {
+public interface Uic301Detail extends ParsedLineItem, Uic301DocumentItem {
 
     /**
      * Returns a number of detail errors.
