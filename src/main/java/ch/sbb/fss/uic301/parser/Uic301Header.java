@@ -481,22 +481,16 @@ public final class Uic301Header implements Sealable, Uic301DocumentItem {
             throw new IllegalArgumentException("# " + no + " is no header line: '" + line + "'");
         }
 
-        try {
+        final SubString subStr = new SubString(line);
+        final String identifier = subStr.next("identifier", 9);
+        final String railUnionCompiling = subStr.next("railUnionCompiling", 4);
+        final String railUnionReceiving = subStr.next("railUnionReceiving", 4);
+        final String period = subStr.next("period", 6);
+        final String noOfDetailPhrases = subStr.next("noOfDetailPhrases", 6);
+        final String noOfTotalPhrases = subStr.next("noOfTotalPhrases", 6);
 
-            final SubString subStr = new SubString(line);
-            final String identifier = subStr.next("identifier", 9);
-            final String railUnionCompiling = subStr.next("railUnionCompiling", 4);
-            final String railUnionReceiving = subStr.next("railUnionReceiving", 4);
-            final String period = subStr.next("period", 6);
-            final String noOfDetailPhrases = subStr.next("noOfDetailPhrases", 6);
-            final String noOfTotalPhrases = subStr.next("noOfTotalPhrases", 6);
-
-            return new Uic301Header(identifier, railUnionCompiling, railUnionReceiving, period, noOfDetailPhrases,
-                    noOfTotalPhrases, no);
-
-        } catch (final NextMissingSubStrException ex) {
-            throw new Uic301Exception("Header line # " + no + " not parseable: " + ex.getMessage());
-        }
+        return new Uic301Header(identifier, railUnionCompiling, railUnionReceiving, period, noOfDetailPhrases,
+                noOfTotalPhrases, no);
 
     }
 

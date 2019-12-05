@@ -660,30 +660,26 @@ public final class Uic301Total implements ParsedLineItem, Sealable, Uic301Docume
         if (!isTotal(line)) {
             throw new IllegalArgumentException("# " + no + " is no total line: '" + line + "'");
         }
-        try {
 
-            final SubString subStr = new SubString(line);
-            final String identifier = subStr.next("identifier", 9);
-            final String railUnionCompiling = subStr.next("railUnionCompiling", 4);
-            final String railUnionReceiving = subStr.next("railUnionReceiving", 4);
-            final String period = subStr.next("period", 6);
-            final String reserved = subStr.next("reserved", 1);
-            final String statementCurrency = subStr.next("statementCurrency", 3);
-            final String statementPeriod = subStr.next("statementPeriod", 2);
-            final String grossDebit = subStr.next("grossDebit", 12);
-            final String grossCredit = subStr.next("grossCredit", 12);
-            final String amountCommissionDebited = subStr.next("amountCommissionDebited", 11);
-            final String amountCommissionCredited = subStr.next("amountCommissionCredited", 11);
-            final String debitCreditBalance = subStr.next("debitCreditBalance", 1);
-            final String netBalanceAmount = subStr.next("netBalanceAmount", 12);
+        final SubString subStr = new SubString(line);
+        final String identifier = subStr.next("identifier", 9);
+        final String railUnionCompiling = subStr.next("railUnionCompiling", 4);
+        final String railUnionReceiving = subStr.next("railUnionReceiving", 4);
+        final String period = subStr.next("period", 6);
+        final String reserved = subStr.next("reserved", 1);
+        final String statementCurrency = subStr.next("statementCurrency", 3);
+        final String statementPeriod = subStr.next("statementPeriod", 2);
+        final String grossDebit = subStr.next("grossDebit", 12);
+        final String grossCredit = subStr.next("grossCredit", 12);
+        final String amountCommissionDebited = subStr.next("amountCommissionDebited", 11);
+        final String amountCommissionCredited = subStr.next("amountCommissionCredited", 11);
+        final String debitCreditBalance = subStr.next("debitCreditBalance", 1);
+        final String netBalanceAmount = subStr.next("netBalanceAmount", 12);
 
-            return new Uic301Total(identifier, railUnionCompiling, railUnionReceiving, period, reserved,
-                    statementCurrency, statementPeriod, grossDebit, grossCredit, amountCommissionDebited,
-                    amountCommissionCredited, debitCreditBalance, netBalanceAmount, no);
+        return new Uic301Total(identifier, railUnionCompiling, railUnionReceiving, period, reserved,
+                statementCurrency, statementPeriod, grossDebit, grossCredit, amountCommissionDebited,
+                amountCommissionCredited, debitCreditBalance, netBalanceAmount, no);
 
-        } catch (final NextMissingSubStrException ex) {
-            throw new Uic301Exception("Total line # " + no + " not parseable: " + ex.getMessage());
-        }
     }
 
     /**

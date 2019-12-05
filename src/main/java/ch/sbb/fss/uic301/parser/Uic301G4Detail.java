@@ -2014,77 +2014,73 @@ public final class Uic301G4Detail implements Uic301Detail, Sealable {
         if (!isDetail(line)) {
             throw new IllegalArgumentException("# " + no + " is no G4 detail line: '" + line + "'");
         }
-        try {
 
-            final SubString subStr = new SubString(line);
-            final String identifier = subStr.next("identifier", 9);
-            final String railUnionCompiling = subStr.next("railUnionCompiling", 4);
-            final String railUnionReceiving = subStr.next("railUnionReceiving", 4);
-            final String period = subStr.next("period", 6);
-            final String reserved1 = subStr.next("reserved1", 1);
-            final String typeOfService = subStr.next("typeOfService", 2);
-            final String typeofTransaction = subStr.next("typeofTransaction", 1);
-            final String distributionChannel = subStr.next("distributionChannel", 1);
-            final String codeIssuingOffice = subStr.next("codeIssuingOffice", 5);
-            final String requestingTerminalRU = subStr.next("requestingTerminalRU", 4);
-            final String requestingTerminalNo = subStr.next("requestingTerminalNo", 7);
-            final String statementCurrency = subStr.next("statementCurrency", 3);
-            final String statementPeriod = subStr.next("statementPeriod", 2);
-            final String classOrCategory = subStr.next("classOrCategory", 3);
-            final String unitPrice = subStr.next("unitPrice", 8);
-            final String trainNumber = subStr.next("trainNumber", 5);
-            final String coachNumber = subStr.next("coachNumber", 3);
-            final String dayOfTravel = subStr.next("dayOfTravel", 6);
-            final String departureLocationRU = subStr.next("departureLocationRU", 4);
-            final String departureLocationStation = subStr.next("departureLocationStation", 5);
-            final String reserved2 = subStr.next("reserved2", 1);
-            final String destinationLocationRU = subStr.next("destinationLocationRU", 4);
-            final String destinationLocationStation = subStr.next("destinationLocationStation", 5);
-            final String reserved3 = subStr.next("reserved3", 1);
-            final String referenceNumber = subStr.next("referenceNumber", 14);
-            final String dialogueNumber = subStr.next("dialogueNumber", 5);
-            final String transactionDate = subStr.next("transactionDate", 6);
-            final String numberOfServices = subStr.next("numberOfServices", 5);
-            final String adjustment = subStr.next("adjustment", 1);
-            final String grossAmountToBeDebited = subStr.next("grossAmountToBeDebited", 10);
-            final String grossAmountToBeCredited = subStr.next("grossAmountToBeCredited", 10);
-            final String serviceProvidingRU = subStr.next("serviceProvidingRU", 4);
-            final String afterSalesFeeSharePercentage = subStr.next("afterSalesFeeSharePercentage", 2);
-            final String tariffCode = subStr.next("tariffCode", 5);
-            final String typeOfJourney = subStr.next("typeOfJourney", 1);
-            final String primaryRouteFirstSectionRU = subStr.next("primaryRouteFirstSectionRU", 4);
-            final String primaryRouteFirstSectionSerialNo = subStr.next("primaryRouteFirstSectionSerialNo", 5);
-            final String passengerCatergory = subStr.next("passengerCatergory", 2);
-            final String amountUnitShare = subStr.next("amountUnitShare", 8);
-            final String grossAmountToBeDebitedTheServiceProvidingRU = subStr
-                    .next("grossAmountToBeDebitedTheServiceProvidingRU", 10);
-            final String grossAmountToBeCreditedTheServiceProvidingRU = subStr
-                    .next("grossAmountToBeCreditedTheServiceProvidingRU", 10);
-            final String percentageCommissionRateOfServiceProvidingRU = subStr
-                    .next("percentageCommissionRateOfServiceProvidingRU", 4);
-            final String amountOfCommissionToBeDebitedTheServiceProvidingRU = subStr
-                    .next("amountOfCommissionToBeDebitedTheServiceProvidingRU", 10);
-            final String amountOfCommissionToBeCreditedTheServiceProvidingRU = subStr
-                    .next("amountOfCommissionToBeCreditedTheServiceProvidingRU", 10);
-            final String reserved4 = subStr.next("reserved4", 3);
-            final String countryCode = subStr.next("countryCode", 2);
-            final String serviceBrandCode = subStr.next("serviceBrandCode", 4);
+        final SubString subStr = new SubString(line);
+        final String identifier = subStr.next("identifier", 9);
+        final String railUnionCompiling = subStr.next("railUnionCompiling", 4);
+        final String railUnionReceiving = subStr.next("railUnionReceiving", 4);
+        final String period = subStr.next("period", 6);
+        final String reserved1 = subStr.next("reserved1", 1);
+        final String typeOfService = subStr.next("typeOfService", 2);
+        final String typeofTransaction = subStr.next("typeofTransaction", 1);
+        final String distributionChannel = subStr.next("distributionChannel", 1);
+        final String codeIssuingOffice = subStr.next("codeIssuingOffice", 5);
+        final String requestingTerminalRU = subStr.next("requestingTerminalRU", 4);
+        final String requestingTerminalNo = subStr.next("requestingTerminalNo", 7);
+        final String statementCurrency = subStr.next("statementCurrency", 3);
+        final String statementPeriod = subStr.next("statementPeriod", 2);
+        final String classOrCategory = subStr.next("classOrCategory", 3);
+        final String unitPrice = subStr.next("unitPrice", 8);
+        final String trainNumber = subStr.next("trainNumber", 5);
+        final String coachNumber = subStr.next("coachNumber", 3);
+        final String dayOfTravel = subStr.next("dayOfTravel", 6);
+        final String departureLocationRU = subStr.next("departureLocationRU", 4);
+        final String departureLocationStation = subStr.next("departureLocationStation", 5);
+        final String reserved2 = subStr.next("reserved2", 1);
+        final String destinationLocationRU = subStr.next("destinationLocationRU", 4);
+        final String destinationLocationStation = subStr.next("destinationLocationStation", 5);
+        final String reserved3 = subStr.next("reserved3", 1);
+        final String referenceNumber = subStr.next("referenceNumber", 14);
+        final String dialogueNumber = subStr.next("dialogueNumber", 5);
+        final String transactionDate = subStr.next("transactionDate", 6);
+        final String numberOfServices = subStr.next("numberOfServices", 5);
+        final String adjustment = subStr.next("adjustment", 1);
+        final String grossAmountToBeDebited = subStr.next("grossAmountToBeDebited", 10);
+        final String grossAmountToBeCredited = subStr.next("grossAmountToBeCredited", 10);
+        final String serviceProvidingRU = subStr.next("serviceProvidingRU", 4);
+        final String afterSalesFeeSharePercentage = subStr.next("afterSalesFeeSharePercentage", 2);
+        final String tariffCode = subStr.next("tariffCode", 5);
+        final String typeOfJourney = subStr.next("typeOfJourney", 1);
+        final String primaryRouteFirstSectionRU = subStr.next("primaryRouteFirstSectionRU", 4);
+        final String primaryRouteFirstSectionSerialNo = subStr.next("primaryRouteFirstSectionSerialNo", 5);
+        final String passengerCatergory = subStr.next("passengerCatergory", 2);
+        final String amountUnitShare = subStr.next("amountUnitShare", 8);
+        final String grossAmountToBeDebitedTheServiceProvidingRU = subStr
+                .next("grossAmountToBeDebitedTheServiceProvidingRU", 10);
+        final String grossAmountToBeCreditedTheServiceProvidingRU = subStr
+                .next("grossAmountToBeCreditedTheServiceProvidingRU", 10);
+        final String percentageCommissionRateOfServiceProvidingRU = subStr
+                .next("percentageCommissionRateOfServiceProvidingRU", 4);
+        final String amountOfCommissionToBeDebitedTheServiceProvidingRU = subStr
+                .next("amountOfCommissionToBeDebitedTheServiceProvidingRU", 10);
+        final String amountOfCommissionToBeCreditedTheServiceProvidingRU = subStr
+                .next("amountOfCommissionToBeCreditedTheServiceProvidingRU", 10);
+        final String reserved4 = subStr.next("reserved4", 3);
+        final String countryCode = subStr.next("countryCode", 2);
+        final String serviceBrandCode = subStr.next("serviceBrandCode", 4);
 
-            return new Uic301G4Detail(identifier, railUnionCompiling, railUnionReceiving, period, reserved1,
-                    typeOfService, typeofTransaction, distributionChannel, codeIssuingOffice, requestingTerminalRU,
-                    requestingTerminalNo, statementCurrency, statementPeriod, classOrCategory, unitPrice, trainNumber,
-                    coachNumber, dayOfTravel, departureLocationRU, departureLocationStation, reserved2,
-                    destinationLocationRU, destinationLocationStation, reserved3, referenceNumber, dialogueNumber,
-                    transactionDate, numberOfServices, adjustment, grossAmountToBeDebited, grossAmountToBeCredited,
-                    serviceProvidingRU, afterSalesFeeSharePercentage, tariffCode, typeOfJourney,
-                    primaryRouteFirstSectionRU, primaryRouteFirstSectionSerialNo, passengerCatergory, amountUnitShare,
-                    grossAmountToBeDebitedTheServiceProvidingRU, grossAmountToBeCreditedTheServiceProvidingRU,
-                    percentageCommissionRateOfServiceProvidingRU, amountOfCommissionToBeDebitedTheServiceProvidingRU,
-                    amountOfCommissionToBeCreditedTheServiceProvidingRU, reserved4, countryCode, serviceBrandCode, no);
+        return new Uic301G4Detail(identifier, railUnionCompiling, railUnionReceiving, period, reserved1,
+                typeOfService, typeofTransaction, distributionChannel, codeIssuingOffice, requestingTerminalRU,
+                requestingTerminalNo, statementCurrency, statementPeriod, classOrCategory, unitPrice, trainNumber,
+                coachNumber, dayOfTravel, departureLocationRU, departureLocationStation, reserved2,
+                destinationLocationRU, destinationLocationStation, reserved3, referenceNumber, dialogueNumber,
+                transactionDate, numberOfServices, adjustment, grossAmountToBeDebited, grossAmountToBeCredited,
+                serviceProvidingRU, afterSalesFeeSharePercentage, tariffCode, typeOfJourney,
+                primaryRouteFirstSectionRU, primaryRouteFirstSectionSerialNo, passengerCatergory, amountUnitShare,
+                grossAmountToBeDebitedTheServiceProvidingRU, grossAmountToBeCreditedTheServiceProvidingRU,
+                percentageCommissionRateOfServiceProvidingRU, amountOfCommissionToBeDebitedTheServiceProvidingRU,
+                amountOfCommissionToBeCreditedTheServiceProvidingRU, reserved4, countryCode, serviceBrandCode, no);
 
-        } catch (final NextMissingSubStrException ex) {
-            throw new Uic301Exception("G4 detail line # " + no + " not parseable: " + ex.getMessage());
-        }
     }
 
     /**

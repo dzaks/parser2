@@ -1,5 +1,7 @@
 package ch.sbb.fss.uic301.parser;
 
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * Stateful substring helper.
  */
@@ -38,11 +40,8 @@ public final class SubString {
      * 
      * @return Next sub string.
      * 
-     * @throws NextMissingSubStrException
-     *             String too short.
      */
-    public final String next(final String name, final int len)
-            throws NextMissingSubStrException {
+    public final String next(final String name, final int len) {
         if (name == null || name.trim().length() == 0) {
             throw new IllegalArgumentException(
                     "Expected a non-null and non-empty name, but was: " + name);
@@ -51,11 +50,12 @@ public final class SubString {
             throw new IllegalArgumentException(
                     "Expected a length greater than 0, but was: " + len);
         }
+        final String sub;
         if (pos + len > str.length()) {
-            throw new NextMissingSubStrException(pos, len, name,
-                    trace.toString(), str);
+            sub = StringUtils.leftPad("", len, " ");
+        } else {
+        	sub = str.substring(pos, pos + len);
         }
-        final String sub = str.substring(pos, pos + len);
 
         if (pos > 0) {
             trace.append(", ");

@@ -1914,71 +1914,67 @@ public final class Uic301G5Detail implements Uic301Detail, Sealable {
         if (!isDetail(line)) {
             throw new IllegalArgumentException("# " + no + " is no G5 detail line: '" + line + "'");
         }
-        try {
 
-            final SubString subStr = new SubString(line);
-            final String identifier = subStr.next("identifier", 9);
-            final String railUnionCompiling = subStr.next("railUnionCompiling", 4);
-            final String railUnionReceiving = subStr.next("railUnionReceiving", 4);
-            final String period = subStr.next("period", 6);
-            final String reserved1 = subStr.next("reserved1", 1);
-            final String typeOfService = subStr.next("typeOfService", 2);
-            final String typeofTransaction = subStr.next("typeofTransaction", 1);
-            final String distributionChannel = subStr.next("distributionChannel", 1);
-            final String codeIssuingOffice = subStr.next("codeIssuingOffice", 5);
-            final String reserve1 = subStr.next("reserve1", 1);
-            final String countryCode = subStr.next("countryCode", 2);
-            final String serviceBrandCode = subStr.next("serviceBrandCode", 4);
-            final String statementCurrency = subStr.next("statementCurrency", 3);
-            final String statementPeriod = subStr.next("statementPeriod", 2);
-            final String tariffCode = subStr.next("tariffCode", 5);
-            final String typeOfJourney = subStr.next("typeOfJourney", 1);
-            final String classOrCategory = subStr.next("classOrCategory", 3);
-            final String amountUnitShare = subStr.next("amountUnitShare", 8);
-            final String trainNumber = subStr.next("trainNumber", 5);
-            final String coachNumber = subStr.next("coachNumber", 3);
-            final String dayOfTravel = subStr.next("dayOfTravel", 6);
-            final String departureLocationRU = subStr.next("departureLocationRU", 4);
-            final String departureLocationStation = subStr.next("departureLocationStation", 5);
-            final String reserved2 = subStr.next("reserved2", 1);
-            final String destinationLocationRU = subStr.next("destinationLocationRU", 4);
-            final String destinationLocationStation = subStr.next("destinationLocationStation", 5);
-            final String typeIdentifier = subStr.next("typeIdentifier", 1);
-            final String numberIdentifiers = subStr.next("numberIdentifiers", 14);
-            final String dialogueNumber = subStr.next("dialogueNumber", 5);
-            final String transactionDate = subStr.next("transactionDate", 6);
-            final String numberOfServices = subStr.next("numberOfServices", 5);
-            final String adjustment = subStr.next("adjustment", 1);
-            final String grossAmountToBeDebited = subStr.next("grossAmountToBeDebited", 10);
-            final String grossAmountToBeCredited = subStr.next("grossAmountToBeCredited", 10);
-            final String afterSalesPercentageFee = subStr.next("afterSalesPercentageFee", 2);
-            final String transactionRU = subStr.next("transactionRU", 4);
-            final String primaryRouteFirstSectionRU = subStr.next("primaryRouteFirstSectionRU", 4);
-            final String primaryRouteFirstSectionSerialNo = subStr.next("primaryRouteFirstSectionSerialNo", 5);
-            final String passengerCatergory = subStr.next("passengerCatergory", 2);
-            final String serviceProvidingRUsCommissionRate = subStr.next("serviceProvidingRUsCommissionRate", 4);
-            final String amountOfCommissionToBeDebitedTheServiceProvidingRU = subStr
-                    .next("amountOfCommissionToBeDebitedTheServiceProvidingRU", 10);
-            final String amountOfCommissionToBeCreditedTheServiceProvidingRU = subStr
-                    .next("amountOfCommissionToBeCreditedTheServiceProvidingRU", 10);
-            final String primaryRouteSecondSectionRU = subStr.next("primaryRouteSecondSectionRU", 4);
-            final String primaryRouteSecondSectionSerialNo = subStr.next("primaryRouteSecondSectionSerialNo", 5);
+        final SubString subStr = new SubString(line);
+        final String identifier = subStr.next("identifier", 9);
+        final String railUnionCompiling = subStr.next("railUnionCompiling", 4);
+        final String railUnionReceiving = subStr.next("railUnionReceiving", 4);
+        final String period = subStr.next("period", 6);
+        final String reserved1 = subStr.next("reserved1", 1);
+        final String typeOfService = subStr.next("typeOfService", 2);
+        final String typeofTransaction = subStr.next("typeofTransaction", 1);
+        final String distributionChannel = subStr.next("distributionChannel", 1);
+        final String codeIssuingOffice = subStr.next("codeIssuingOffice", 5);
+        final String reserve1 = subStr.next("reserve1", 1);
+        final String countryCode = subStr.next("countryCode", 2);
+        final String serviceBrandCode = subStr.next("serviceBrandCode", 4);
+        final String statementCurrency = subStr.next("statementCurrency", 3);
+        final String statementPeriod = subStr.next("statementPeriod", 2);
+        final String tariffCode = subStr.next("tariffCode", 5);
+        final String typeOfJourney = subStr.next("typeOfJourney", 1);
+        final String classOrCategory = subStr.next("classOrCategory", 3);
+        final String amountUnitShare = subStr.next("amountUnitShare", 8);
+        final String trainNumber = subStr.next("trainNumber", 5);
+        final String coachNumber = subStr.next("coachNumber", 3);
+        final String dayOfTravel = subStr.next("dayOfTravel", 6);
+        final String departureLocationRU = subStr.next("departureLocationRU", 4);
+        final String departureLocationStation = subStr.next("departureLocationStation", 5);
+        final String reserved2 = subStr.next("reserved2", 1);
+        final String destinationLocationRU = subStr.next("destinationLocationRU", 4);
+        final String destinationLocationStation = subStr.next("destinationLocationStation", 5);
+        final String typeIdentifier = subStr.next("typeIdentifier", 1);
+        final String numberIdentifiers = subStr.next("numberIdentifiers", 14);
+        final String dialogueNumber = subStr.next("dialogueNumber", 5);
+        final String transactionDate = subStr.next("transactionDate", 6);
+        final String numberOfServices = subStr.next("numberOfServices", 5);
+        final String adjustment = subStr.next("adjustment", 1);
+        final String grossAmountToBeDebited = subStr.next("grossAmountToBeDebited", 10);
+        final String grossAmountToBeCredited = subStr.next("grossAmountToBeCredited", 10);
+        final String afterSalesPercentageFee = subStr.next("afterSalesPercentageFee", 2);
+        final String transactionRU = subStr.next("transactionRU", 4);
+        final String primaryRouteFirstSectionRU = subStr.next("primaryRouteFirstSectionRU", 4);
+        final String primaryRouteFirstSectionSerialNo = subStr.next("primaryRouteFirstSectionSerialNo", 5);
+        final String passengerCatergory = subStr.next("passengerCatergory", 2);
+        final String serviceProvidingRUsCommissionRate = subStr.next("serviceProvidingRUsCommissionRate", 4);
+        final String amountOfCommissionToBeDebitedTheServiceProvidingRU = subStr
+                .next("amountOfCommissionToBeDebitedTheServiceProvidingRU", 10);
+        final String amountOfCommissionToBeCreditedTheServiceProvidingRU = subStr
+                .next("amountOfCommissionToBeCreditedTheServiceProvidingRU", 10);
+        final String primaryRouteSecondSectionRU = subStr.next("primaryRouteSecondSectionRU", 4);
+        final String primaryRouteSecondSectionSerialNo = subStr.next("primaryRouteSecondSectionSerialNo", 5);
 
-            return new Uic301G5Detail(identifier, railUnionCompiling, railUnionReceiving, period, reserved1,
-                    typeOfService, typeofTransaction, distributionChannel, codeIssuingOffice, reserve1, countryCode,
-                    serviceBrandCode, statementCurrency, statementPeriod, tariffCode, typeOfJourney, classOrCategory,
-                    amountUnitShare, trainNumber, coachNumber, dayOfTravel, departureLocationRU,
-                    departureLocationStation, reserved2, destinationLocationRU, destinationLocationStation,
-                    typeIdentifier, numberIdentifiers, dialogueNumber, transactionDate, numberOfServices, adjustment,
-                    grossAmountToBeDebited, grossAmountToBeCredited, afterSalesPercentageFee, transactionRU,
-                    primaryRouteFirstSectionRU, primaryRouteFirstSectionSerialNo, passengerCatergory,
-                    serviceProvidingRUsCommissionRate, amountOfCommissionToBeDebitedTheServiceProvidingRU,
-                    amountOfCommissionToBeCreditedTheServiceProvidingRU, primaryRouteSecondSectionRU,
-                    primaryRouteSecondSectionSerialNo, no);
+        return new Uic301G5Detail(identifier, railUnionCompiling, railUnionReceiving, period, reserved1,
+                typeOfService, typeofTransaction, distributionChannel, codeIssuingOffice, reserve1, countryCode,
+                serviceBrandCode, statementCurrency, statementPeriod, tariffCode, typeOfJourney, classOrCategory,
+                amountUnitShare, trainNumber, coachNumber, dayOfTravel, departureLocationRU,
+                departureLocationStation, reserved2, destinationLocationRU, destinationLocationStation,
+                typeIdentifier, numberIdentifiers, dialogueNumber, transactionDate, numberOfServices, adjustment,
+                grossAmountToBeDebited, grossAmountToBeCredited, afterSalesPercentageFee, transactionRU,
+                primaryRouteFirstSectionRU, primaryRouteFirstSectionSerialNo, passengerCatergory,
+                serviceProvidingRUsCommissionRate, amountOfCommissionToBeDebitedTheServiceProvidingRU,
+                amountOfCommissionToBeCreditedTheServiceProvidingRU, primaryRouteSecondSectionRU,
+                primaryRouteSecondSectionSerialNo, no);
 
-        } catch (final NextMissingSubStrException ex) {
-            throw new Uic301Exception("G5 detail line # " + no + " not parseable: " + ex.getMessage());
-        }
     }
 
     /**

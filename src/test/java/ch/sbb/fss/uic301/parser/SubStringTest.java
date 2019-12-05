@@ -22,7 +22,7 @@ public final class SubStringTest {
     }
 
     @Test
-    public void testNextNoName() throws NextMissingSubStrException {
+    public void testNextNoName() {
         final SubString testee = new SubString("");
         try {
             testee.next(null, 1);
@@ -41,7 +41,7 @@ public final class SubStringTest {
     }
 
     @Test
-    public void testNextWrongLen() throws NextMissingSubStrException {
+    public void testNextWrongLen() {
         final SubString testee = new SubString("");
         try {
             testee.next("a", -1);
@@ -60,33 +60,26 @@ public final class SubStringTest {
     }
 
     @Test
-    public void testNextMissingSubStrExceptionEmpty() {
+    public void testNextMissing() {
         final SubString testee = new SubString("");
-        try {
-            testee.next("a", 1);
-            fail();
-        } catch (final NextMissingSubStrException ex) {
-            assertThat(ex.getMessage()).isEqualTo(
-                    "Cannot return 1 character for field 'a' starting at position 0: trace=[], line=''");
-        }
+        assertThat(testee.next("a", 1)).isEqualTo(" ");
     }
 
     @Test
     public void testNextMissingSubStrException() {
         final SubString testee = new SubString("123ABC");
-        try {
-            testee.next("a", 3);
-            testee.next("b", 3);
-            testee.next("c", 1);
-            fail();
-        } catch (final NextMissingSubStrException ex) {
-            assertThat(ex.getMessage()).isEqualTo(
-                    "Cannot return 1 character for field 'c' starting at position 6: trace=[a='123', b='ABC'], line='123ABC'");
-        }
+        
+        // Existing
+        assertThat(testee.next("a", 3)).isEqualTo("123");
+        assertThat(testee.next("b", 3)).isEqualTo("ABC");
+        
+        // Missing
+        assertThat(testee.next("c", 1)).isEqualTo(" ");
+        assertThat(testee.next("d", 3)).isEqualTo("   ");
     }
 
     @Test
-    public void testNextValid() throws NextMissingSubStrException {
+    public void testNextValid() {
 
         final SubString testee1 = new SubString("123ABC");
         assertThat(testee1.next("a", 3)).isEqualTo("123");
