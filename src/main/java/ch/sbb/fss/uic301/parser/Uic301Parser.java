@@ -8,6 +8,8 @@ import java.io.LineNumberReader;
 
 import javax.validation.Validator;
 
+import org.fuin.utils4j.Utils4J;
+
 /**
  * Parser for a file that contains one or more UIC 301 documents.
  */
@@ -28,6 +30,9 @@ public final class Uic301Parser {
      */
     public final Uic301Documents parse(final File inputFile, final Validator validator) throws Uic301Exception {
 
+    	Utils4J.checkValidFile(inputFile);
+    	Utils4J.checkNotNull("validator", validator);
+    	
         final Uic301Documents documents = new Uic301Documents();
         String line = null;
         try {
