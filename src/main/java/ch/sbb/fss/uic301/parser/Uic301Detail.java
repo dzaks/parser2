@@ -233,16 +233,12 @@ public interface Uic301Detail extends ParsedLineItem, Uic301DocumentItem {
     public BigDecimal getAmountOfCommissionToBeDebitedTheServiceProvidingRUValue();
 
     public BigDecimal getAmountOfCommissionToBeCreditedTheServiceProvidingRUValue();
-//
-//    public void setRailUnionCompiling(String railUnionCompiling);
-//
-//    public void setRailUnionReceiving(String railUnionReceiving);
-//
-//    public void setTransactionDate(String transactionDate);
-//
-//    public void setTypeOfTransaction(String typeOfTransaction);
-//
-//    public void setPrimaryRouteFirstSectionRU(String primaryRouteFirstSectionRU);
+
+    public void setDepartureLocationRU(String string);
+
+    public void setDestinationLocationRU(String string);
+    
+    public void setPrimaryRouteFirstSectionRU(String string);
 
 
 }
