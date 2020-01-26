@@ -208,7 +208,7 @@ public final class Uic301G5Detail implements Uic301Detail, Sealable {
      */
     @Label("Country code")
     @ShortLabel("TRM")
-    @Tooltip("ISO 3166-1 alpha-2 country code for requesting terminal or '00' [9]")
+    @Tooltip("ISO 3166-1 alpha-2 country code for requesting terminal or '00' [10b]")
     @TableColumn(pos = 9, width = 50)
     @NotNull
     @IsoCountryCodeStr
@@ -693,7 +693,7 @@ public final class Uic301G5Detail implements Uic301Detail, Sealable {
      */
     @Label("Service RU primary route 2nd section")
     @ShortLabel("RU SEC2")
-    @Tooltip("Primary route 2nd section Service-providing RU (RICS Code) [32]")
+    @Tooltip("Primary route 2nd section Service-providing RU (RICS Code) [37(1)]")
     @TableColumn(pos = 40, width = 60)
     @NotNull
     @RicsCodeStr
@@ -708,7 +708,7 @@ public final class Uic301G5Detail implements Uic301Detail, Sealable {
      */
     @Label("Primary route 2nd section Serial number")
     @ShortLabel("NO SEC2")
-    @Tooltip("Primary route 2nd section Serial number. NRT serial number from 108-1, TCVS file, field 2 [32(2)]")
+    @Tooltip("Primary route 2nd section Serial number. NRT serial number from 108-1, TCVS file, field 2 [37(2)]")
     @TableColumn(pos = 41, width = 60)
     @NotNull
     @FixedLenDigitsStr(5)

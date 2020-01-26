@@ -324,7 +324,7 @@ public final class Uic301G4Detail implements Uic301Detail, Sealable {
      */
     @Label("Departure location RU code")
     @ShortLabel("DEPRU")
-    @Tooltip("Departure location RU code, with preceding zeroes. [19(1)]")
+    @Tooltip("Departure location RU code, with preceding zeroes. [17(1)]")
     @TableColumn(pos = 18, width = 50)
     @NotNull
     @FixedLenDigitsStr(4)
@@ -359,7 +359,7 @@ public final class Uic301G4Detail implements Uic301Detail, Sealable {
      */
     @Label("Destination location RU  code")
     @ShortLabel("DESRU")
-    @Tooltip("Destination location RU code [21(1)]")
+    @Tooltip("Destination location RU code [19(1)]")
     @TableColumn(pos = 20, width = 50)
     @NotNull
     @FixedLenDigitsStr(4)
@@ -641,7 +641,7 @@ public final class Uic301G4Detail implements Uic301Detail, Sealable {
      * decimal point.
      */
     @Label("Gross amount to be debited the service providing RU")
-    @ShortLabel("CREDIT")
+    @ShortLabel("DEBIT")
     @Tooltip("Gross amount to be debited the service providing RU for canellations/after sales."
             + " Eight positions preceding and two following the decimal point."
             + " [35]")
@@ -681,7 +681,7 @@ public final class Uic301G4Detail implements Uic301Detail, Sealable {
     @Tooltip("The commission rate granted by the service providing RU."
             + "Two positions preceding and two positions following the decimal point."
             + " [37]")
-    @TableColumn(pos = 39, width = 40)
+    @TableColumn(pos = 38, width = 40)
     @NotNull
     @FixedLenDigitsStr(4)
     @XmlAttribute(name = "_37")
@@ -700,7 +700,7 @@ public final class Uic301G4Detail implements Uic301Detail, Sealable {
     @Tooltip("Amount of commission to be debited the service providing RU for reservation/sales."
             + " Eight positions preceding and two following the decimal point."
             + " [38]")
-    @TableColumn(pos = 38, width = 80)
+    @TableColumn(pos = 39, width = 80)
     @NotNull
     @FixedLenDigitsStr(10)
     @XmlAttribute(name = "_38")

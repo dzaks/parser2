@@ -129,7 +129,7 @@ public final class Uic301Total implements ParsedLineItem, Sealable, Uic301Docume
      */
     @Label("Statement Currency")
     @ShortLabel("St.Curr.")
-    @Tooltip("ISO 4207 code for currency, normally EUR [6]")
+    @Tooltip("ISO 4207 code for currency, normally EUR [6(1)]")
     @TableColumn(pos = 5, width = 70)
     @NotNull
     @CurrencyStr
@@ -142,7 +142,7 @@ public final class Uic301Total implements ParsedLineItem, Sealable, Uic301Docume
      */
     @Label("Statement Period")
     @ShortLabel("St.Per.")
-    @Tooltip("Period code stipulated by BCC [6]")
+    @Tooltip("Period code stipulated by BCC [6(2)]")
     @TableColumn(pos = 6, width = 70)
     @NotNull
     @FixedLenDigitsStr(2)
