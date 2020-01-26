@@ -32,4 +32,6 @@ public @interface AllSameHeader {
 
     Class<? extends Payload>[] payload() default {};
 
+    boolean block();
+
 }

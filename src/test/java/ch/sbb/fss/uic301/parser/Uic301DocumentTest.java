@@ -22,7 +22,7 @@ public class Uic301DocumentTest {
 
     @Test
     public void equalsContract() {
-        EqualsVerifier.forClass(Uic301Document.class).suppress(Warning.NONFINAL_FIELDS).verify();
+        EqualsVerifier.forClass(Uic301Document.class).suppress(Warning.NONFINAL_FIELDS).withIgnoredFields("ignoreBlock").verify();
     }
 
     @Test

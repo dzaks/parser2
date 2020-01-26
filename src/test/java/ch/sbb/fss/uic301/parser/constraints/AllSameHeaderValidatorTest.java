@@ -288,6 +288,11 @@ public class AllSameHeaderValidatorTest {
             public Class<? extends Payload>[] payload() {
                 return null;
             }
+
+            @Override
+            public boolean block() {
+                return true;
+            }
         };
     }
 

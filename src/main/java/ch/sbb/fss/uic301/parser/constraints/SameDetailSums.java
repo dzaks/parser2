@@ -32,4 +32,6 @@ public @interface SameDetailSums {
 
     Class<? extends Payload>[] payload() default {};
 
+    boolean block();
+
 }
