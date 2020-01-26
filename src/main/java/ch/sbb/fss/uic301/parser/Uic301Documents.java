@@ -228,6 +228,7 @@ public final class Uic301Documents implements Sealable {
 
     public static Uic301Document copyDocument(Uic301Document doc) {
         Uic301Document copy = new Uic301Document(copyHeader(doc.getHeader()), copyDetails(doc.getDetails()), copyTotals(doc.getTotals()));
+        copy.setIgnoreBlock(doc.getIgnoreBlock());
         return copy;
     }
 
