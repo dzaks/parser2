@@ -24,6 +24,9 @@ public final class Uic301Document implements Sealable {
     public static final String TAG = "document";
 
     private transient boolean sealed;
+    
+    @XmlAttribute(name = "ignore-block")
+    private Boolean ignoreBlock;
 
     @XmlAttribute(name = "errorCount")
     private Integer errorCount;
@@ -294,6 +297,14 @@ public final class Uic301Document implements Sealable {
         if (sealed) {
             throw new IllegalStateException("The class is sealed. No more changes are allowed.");
         }
+    }
+
+    public Boolean getIgnoreBlock() {
+        return ignoreBlock;
+    }
+
+    public void setIgnoreBlock(Boolean ignoreBlock) {
+        this.ignoreBlock = ignoreBlock;
     }
 
 }

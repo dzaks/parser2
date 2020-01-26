@@ -1,6 +1,7 @@
 package ch.sbb.fss.uic301.parser;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertTrue;
 
 import javax.validation.Validation;
 import javax.validation.Validator;
@@ -101,6 +102,22 @@ public class Uic301DocumentTest {
     }
 
 
+    @Test
+    public void testIgnoreBlock() {
+
+        // PREPARE
+        final Uic301Document original = createValidSample();
+        original.setIgnoreBlock(Boolean.TRUE);
+
+        // TEST
+        final String xml = JaxbUtils.marshal(original, Uic301Document.class);
+        final Uic301Document copy = JaxbUtils.unmarshal(xml, Uic301Document.class);
+
+        // VERIFY
+        assertTrue(copy.getIgnoreBlock());
+
+    }
+    
     static Uic301Document createValidSample() {
         final Uic301Header header = Uic301HeaderTest.createValidSample();
         final Uic301Details details = Uic301DetailsTest.createValidSample();
