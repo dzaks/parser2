@@ -18,6 +18,8 @@ public final class CalculatedDetailAmounts {
     private NetBalanceType netBalanceType;
 
     private BigDecimal netBalanceAmount;
+    
+    private Uic301Type type = Uic301Type.G5_ALLOCATION;
 
     private boolean sealed;
 
@@ -72,6 +74,53 @@ public final class CalculatedDetailAmounts {
                 .add(amountCommissionDebited)
                 .setScale(2, BigDecimal.ROUND_HALF_UP);
 
+    }
+    
+    public void addAmounts(final Uic301Detail detail) {
+
+        if (sealed) {
+            throw new UnsupportedOperationException(
+                    "Adding data is not allowed after sealing the instance");
+        }
+
+        if(detail instanceof Uic301G5Detail) {
+            addG5((Uic301G5Detail)detail);
+        }
+        else if(detail instanceof Uic301G4Detail) {
+            addG4((Uic301G4Detail)detail);
+            type = Uic301Type.G4;
+        }       
+
+    }
+
+    private void addG5(final Uic301G5Detail detail) {
+        this.grossAmountToBeCredited = this.grossAmountToBeCredited
+                .add(detail.getGrossAmountToBeCreditedValue())
+                .setScale(2, BigDecimal.ROUND_HALF_UP);
+        this.grossAmountToBeDebited = this.grossAmountToBeDebited
+                .add(detail.getGrossAmountToBeDebitedValue())
+                .setScale(2, BigDecimal.ROUND_HALF_UP);
+        this.amountCommissionCredited = this.amountCommissionCredited
+                .add(detail.getAmountOfCommissionToBeCreditedTheServiceProvidingRUValue())
+                .setScale(2, BigDecimal.ROUND_HALF_UP);
+        this.amountCommissionDebited = this.amountCommissionDebited
+                .add(detail.getAmountOfCommissionToBeDebitedTheServiceProvidingRUValue())
+                .setScale(2, BigDecimal.ROUND_HALF_UP);
+    }
+    
+    private void addG4(final Uic301G4Detail detail) {
+        this.grossAmountToBeCredited = this.grossAmountToBeCredited
+                .add(detail.getGrossAmountToBeCreditedTheServiceProvidingRUValue())
+                .setScale(2, BigDecimal.ROUND_HALF_UP);
+        this.grossAmountToBeDebited = this.grossAmountToBeDebited
+                .add(detail.getGrossAmountToBeDebitedTheServiceProvidingRUValue())
+                .setScale(2, BigDecimal.ROUND_HALF_UP);
+        this.amountCommissionCredited = this.amountCommissionCredited
+                .add(detail.getAmountOfCommissionToBeCreditedTheServiceProvidingRUValue())
+                .setScale(2, BigDecimal.ROUND_HALF_UP);
+        this.amountCommissionDebited = this.amountCommissionDebited
+                .add(detail.getAmountOfCommissionToBeDebitedTheServiceProvidingRUValue())
+                .setScale(2, BigDecimal.ROUND_HALF_UP);
     }
 
     /**
@@ -136,14 +185,11 @@ public final class CalculatedDetailAmounts {
      */
     public void seal() {
 
-        final BigDecimal grossAmount = grossAmountToBeCredited
-                .subtract(grossAmountToBeDebited)
-                .setScale(2, BigDecimal.ROUND_HALF_UP);
-        final BigDecimal amountCommission = amountCommissionCredited
-                .subtract(amountCommissionDebited)
-                .setScale(2, BigDecimal.ROUND_HALF_UP);
-        netBalanceAmount = grossAmount.add(amountCommission).setScale(2,
-                BigDecimal.ROUND_HALF_UP);
+        if(type == Uic301Type.G4) {
+            balanceG4();
+        } else {
+            balanceG5();
+        }
         if (netBalanceAmount.signum() == 1) {
             netBalanceType = NetBalanceType.CREDIT;
         } else if (netBalanceAmount.signum() == -1) {
@@ -153,8 +199,31 @@ public final class CalculatedDetailAmounts {
         } else {
             netBalanceType = NetBalanceType.NONE;
         }
-
         sealed = true;
+    }
+
+    private void balanceG4() {
+        final BigDecimal grossAmount = grossAmountToBeDebited
+                .subtract(grossAmountToBeCredited)
+                .setScale(2, BigDecimal.ROUND_HALF_UP);
+        final BigDecimal amountCommission = amountCommissionDebited
+                .subtract(amountCommissionCredited)
+                .setScale(2, BigDecimal.ROUND_HALF_UP);
+        netBalanceAmount = grossAmount.add(amountCommission).setScale(2,
+                BigDecimal.ROUND_HALF_UP);
+        
+    }
+
+    private void balanceG5() {
+        final BigDecimal grossAmount = grossAmountToBeCredited
+                .subtract(grossAmountToBeDebited)
+                .setScale(2, BigDecimal.ROUND_HALF_UP);
+        final BigDecimal amountCommission = amountCommissionCredited
+                .subtract(amountCommissionDebited)
+                .setScale(2, BigDecimal.ROUND_HALF_UP);
+        netBalanceAmount = grossAmount.add(amountCommission).setScale(2,
+                BigDecimal.ROUND_HALF_UP);
+ 
     }
 
 }

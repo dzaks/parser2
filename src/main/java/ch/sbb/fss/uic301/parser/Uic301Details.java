@@ -169,9 +169,7 @@ public final class Uic301Details implements Sealable {
                 calcAmounts = new CalculatedDetailAmounts();
                 amounts.put(currencyPeriod, calcAmounts);
             }
-            calcAmounts.addAmounts(detail.getGrossAmountToBeCreditedValue(), detail.getGrossAmountToBeDebitedValue(),
-                    detail.getAmountOfCommissionToBeCreditedTheServiceProvidingRUValue(),
-                    detail.getAmountOfCommissionToBeDebitedTheServiceProvidingRUValue());
+            calcAmounts.addAmounts(detail);
         }
 
         seal(amounts);

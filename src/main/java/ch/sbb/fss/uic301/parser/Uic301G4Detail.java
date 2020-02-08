@@ -681,7 +681,7 @@ public final class Uic301G4Detail implements Uic301Detail, Sealable {
     @Tooltip("The commission rate granted by the service providing RU."
             + "Two positions preceding and two positions following the decimal point."
             + " [37]")
-    @TableColumn(pos = 38, width = 40)
+    @TableColumn(pos = 39, width = 40)
     @NotNull
     @FixedLenDigitsStr(4)
     @XmlAttribute(name = "_37")
@@ -700,7 +700,7 @@ public final class Uic301G4Detail implements Uic301Detail, Sealable {
     @Tooltip("Amount of commission to be debited the service providing RU for reservation/sales."
             + " Eight positions preceding and two following the decimal point."
             + " [38]")
-    @TableColumn(pos = 39, width = 80)
+    @TableColumn(pos = 40, width = 80)
     @NotNull
     @FixedLenDigitsStr(10)
     @XmlAttribute(name = "_38")
@@ -719,7 +719,7 @@ public final class Uic301G4Detail implements Uic301Detail, Sealable {
     @Tooltip("Amount of commission to be credited the service providing RU for reservation/sales."
             + " Eight positions preceding and two following the decimal point."
             + " [39]")
-    @TableColumn(pos = 39, width = 80)
+    @TableColumn(pos = 41, width = 80)
     @NotNull
     @FixedLenDigitsStr(10)
     @XmlAttribute(name = "_39")
@@ -741,7 +741,7 @@ public final class Uic301G4Detail implements Uic301Detail, Sealable {
     @Label("Country code")
     @ShortLabel("TRM")
     @Tooltip("ISO 3166 country code for requesting terminal. When not used, fill with zeroes [40b]")
-    @TableColumn(pos = 40, width = 50)
+    @TableColumn(pos = 42, width = 50)
     @NotNull
     @IsoCountryCodeStr
     @XmlAttribute(name = "_40b")
@@ -754,7 +754,7 @@ public final class Uic301G4Detail implements Uic301Detail, Sealable {
     @Label("Service brand code")
     @ShortLabel("SBC")
     @Tooltip("Service brand code or '0000' [40c]")
-    @TableColumn(pos = 41, width = 50)
+    @TableColumn(pos = 43, width = 50)
     @NotNull
     @FixedLenDigitsStr(4)
     @XmlAttribute(name = "_40c")

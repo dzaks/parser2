@@ -12,6 +12,7 @@ import org.hibernate.validator.constraintvalidation.HibernateConstraintValidator
 import ch.sbb.fss.uic301.parser.CalculatedDetailAmounts;
 import ch.sbb.fss.uic301.parser.Uic301Document;
 import ch.sbb.fss.uic301.parser.Uic301Total;
+import ch.sbb.fss.uic301.parser.Uic301Type;
 
 /**
  * Ensures that the calculated sums of the detail section and the totals are
@@ -46,77 +47,11 @@ public class SameDetailsSumValidator
                 err.append(msg);
                 break;
             }
-
-            if (!Objects.equals(total.getGrossCreditValue(),
-                    calculated.getGrossAmountToBeCredited())) {
-                final String msg = MessageFormat.format(
-                        "Gross credit mismatch: total={0}, sum details={1}",
-                        total.getGrossCredit(),
-                        calculated.getGrossAmountToBeCredited());
-                if (err.length() > 0) {
-                    err.append(", ");
-                }
-                err.append(msg);
-            }
-
-            if (!Objects.equals(total.getGrossDebitValue(),
-                    calculated.getGrossAmountToBeDebited())) {
-                final String msg = MessageFormat.format(
-                        "Gross debit mismatch: total={0}, sum details={1}",
-                        total.getGrossDebit(),
-                        calculated.getGrossAmountToBeDebited());
-                if (err.length() > 0) {
-                    err.append(", ");
-                }
-                err.append(msg);
-            }
-
-            if (!Objects.equals(total.getAmountCommissionCreditedValue(),
-                    calculated.getAmountCommissionCredited())) {
-                final String msg = MessageFormat.format(
-                        "Amount commission credited mismatch: total={0}, sum details={1}",
-                        total.getAmountCommissionCreditedValue(),
-                        calculated.getAmountCommissionCredited());
-                if (err.length() > 0) {
-                    err.append(", ");
-                }
-                err.append(msg);
-            }
-
-            if (!Objects.equals(total.getAmountCommissionDebitedValue(),
-                    calculated.getAmountCommissionDebited())) {
-                final String msg = MessageFormat.format(
-                        "Amount commission debited mismatch: total={0}, sum details={1}",
-                        total.getAmountCommissionDebitedValue(),
-                        calculated.getAmountCommissionDebited());
-                if (err.length() > 0) {
-                    err.append(", ");
-                }
-                err.append(msg);
-            }
-
-            if (!Objects.equals(total.getNetBalanceAmountValue(),
-                    calculated.getNetBalanceAmount())) {
-                final String msg = MessageFormat.format(
-                        "Net balance amount mismatch: total={0}, sum details={1}",
-                        total.getNetBalanceAmountValue(),
-                        calculated.getNetBalanceAmount());
-                if (err.length() > 0) {
-                    err.append(", ");
-                }
-                err.append(msg);
-            }
-
-            if (!Objects.equals(total.getDebitCreditBalanceType(),
-                    calculated.getNetBalanceType())) {
-                final String msg = MessageFormat.format(
-                        "Net balance type mismatch: total={0}, sum details={1}",
-                        total.getDebitCreditBalanceType(),
-                        calculated.getNetBalanceType());
-                if (err.length() > 0) {
-                    err.append(", ");
-                }
-                err.append(msg);
+            
+            if(doc.getHeader().getIdentifierType() == Uic301Type.G4) {
+                validateG4(total, calculated, err);
+            } else {
+                validateG5(total, calculated, err); 
             }
 
         }
@@ -128,6 +63,156 @@ public class SameDetailsSumValidator
         }
 
         return err.length() == 0;
+    }
+
+    private void validateG5(Uic301Total total, CalculatedDetailAmounts calculated, StringBuilder err) {
+        if (!Objects.equals(total.getGrossCreditValue(),
+                calculated.getGrossAmountToBeCredited())) {
+            final String msg = MessageFormat.format(
+                    "Gross credit mismatch: total={0}, sum details={1}",
+                    total.getGrossCredit(),
+                    calculated.getGrossAmountToBeCredited());
+            if (err.length() > 0) {
+                err.append(", ");
+            }
+            err.append(msg);
+        }
+
+        if (!Objects.equals(total.getGrossDebitValue(),
+                calculated.getGrossAmountToBeDebited())) {
+            final String msg = MessageFormat.format(
+                    "Gross debit mismatch: total={0}, sum details={1}",
+                    total.getGrossDebit(),
+                    calculated.getGrossAmountToBeDebited());
+            if (err.length() > 0) {
+                err.append(", ");
+            }
+            err.append(msg);
+        }
+
+        if (!Objects.equals(total.getAmountCommissionCreditedValue(),
+                calculated.getAmountCommissionCredited())) {
+            final String msg = MessageFormat.format(
+                    "Amount commission credited mismatch: total={0}, sum details={1}",
+                    total.getAmountCommissionCreditedValue(),
+                    calculated.getAmountCommissionCredited());
+            if (err.length() > 0) {
+                err.append(", ");
+            }
+            err.append(msg);
+        }
+
+        if (!Objects.equals(total.getAmountCommissionDebitedValue(),
+                calculated.getAmountCommissionDebited())) {
+            final String msg = MessageFormat.format(
+                    "Amount commission debited mismatch: total={0}, sum details={1}",
+                    total.getAmountCommissionDebitedValue(),
+                    calculated.getAmountCommissionDebited());
+            if (err.length() > 0) {
+                err.append(", ");
+            }
+            err.append(msg);
+        }
+
+        if (!Objects.equals(total.getNetBalanceAmountValue(),
+                calculated.getNetBalanceAmount())) {
+            final String msg = MessageFormat.format(
+                    "Net balance amount mismatch: total={0}, sum details={1}",
+                    total.getNetBalanceAmountValue(),
+                    calculated.getNetBalanceAmount());
+            if (err.length() > 0) {
+                err.append(", ");
+            }
+            err.append(msg);
+        }
+
+        if (!Objects.equals(total.getDebitCreditBalanceType(),
+                calculated.getNetBalanceType())) {
+            final String msg = MessageFormat.format(
+                    "Net balance type mismatch: total={0}, sum details={1}",
+                    total.getDebitCreditBalanceType(),
+                    calculated.getNetBalanceType());
+            if (err.length() > 0) {
+                err.append(", ");
+            }
+            err.append(msg);
+        }
+        
+    }
+
+    private void validateG4(final Uic301Total total, final CalculatedDetailAmounts calculated,  final StringBuilder err) {
+        if (!Objects.equals(total.getGrossCreditValue(),
+                calculated.getGrossAmountToBeDebited())) {
+            final String msg = MessageFormat.format(
+                    "Gross credit mismatch: total={0}, sum details={1}",
+                    total.getGrossCredit(),
+                    calculated.getGrossAmountToBeDebited());
+            if (err.length() > 0) {
+                err.append(", ");
+            }
+            err.append(msg);
+        }
+
+        if (!Objects.equals(total.getGrossDebitValue(),
+                calculated.getGrossAmountToBeCredited())) {
+            final String msg = MessageFormat.format(
+                    "Gross debit mismatch: total={0}, sum details={1}",
+                    total.getGrossDebit(),
+                    calculated.getGrossAmountToBeCredited());
+            if (err.length() > 0) {
+                err.append(", ");
+            }
+            err.append(msg);
+        }
+
+        if (!Objects.equals(total.getAmountCommissionCreditedValue(),
+                calculated.getAmountCommissionDebited())) {
+            final String msg = MessageFormat.format(
+                    "Amount commission credited mismatch: total={0}, sum details={1}",
+                    total.getAmountCommissionCreditedValue(),
+                    calculated.getAmountCommissionDebited());
+            if (err.length() > 0) {
+                err.append(", ");
+            }
+            err.append(msg);
+        }
+
+        if (!Objects.equals(total.getAmountCommissionDebitedValue(),
+                calculated.getAmountCommissionCredited())) {
+            final String msg = MessageFormat.format(
+                    "Amount commission debited mismatch: total={0}, sum details={1}",
+                    total.getAmountCommissionDebitedValue(),
+                    calculated.getAmountCommissionCredited());
+            if (err.length() > 0) {
+                err.append(", ");
+            }
+            err.append(msg);
+        }
+
+        if (!Objects.equals(total.getNetBalanceAmountValue(),
+                calculated.getNetBalanceAmount())) {
+            final String msg = MessageFormat.format(
+                    "Net balance amount mismatch: total={0}, sum details={1}",
+                    total.getNetBalanceAmountValue(),
+                    calculated.getNetBalanceAmount());
+            if (err.length() > 0) {
+                err.append(", ");
+            }
+            err.append(msg);
+        }
+
+        if (!Objects.equals(total.getDebitCreditBalanceType(),
+                calculated.getNetBalanceType())) {
+            final String msg = MessageFormat.format(
+                    "Net balance type mismatch: total={0}, sum details={1}",
+                    total.getDebitCreditBalanceType(),
+                    calculated.getNetBalanceType());
+            if (err.length() > 0) {
+                err.append(", ");
+            }
+            err.append(msg);
+        }
+        
     }
 
 }

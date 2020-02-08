@@ -25,17 +25,18 @@ import ch.sbb.fss.uic301.parser.Uic301Exception;
  */
 public class AllSameHeaderValidatorTest {
 
-    private static final String HEADER_LINE = "14111000000871185171100083955000001";
+    private static final String HEADER_LINE = "14111000011851180190100000049000001";
 
-    private static final String DETAIL_HEADER = "14121000000871185171100";
+    private static final String DETAIL_HEADER = "14121000011851180190100";
+                                                
 
-    private static final String DETAIL_REST = "007010000011850000000EUR01001000121000921300017112400877130401185000100008718980231420000017112200001000000121000000000000008700100011008700271110001210000000000000000012100100000000012100000000000000CH0000";
+    private static final String DETAIL_REST = "003010000011801337801EUR01002000004200000600019022000850033200085000100004525401176322259719010900001000000004200000000000118500629301000000000000000042000000000000000000420050000000000210000000000000DE0050";
 
     private static final String DETAIL_LINE = DETAIL_HEADER + DETAIL_REST;
 
-    private static final String TOTAL_HEADER = "14131000000871185171100";
+    private static final String TOTAL_HEADER = "14131000011851180190100";
 
-    private static final String TOTAL_REST = "0EUR0100000001210000000000000000000001210000000000001000000013310";
+    private static final String TOTAL_REST = "0EUR0100000000042000000000000000000000000000000000211000000000399";
 
     private static final String TOTAL_LINE = TOTAL_HEADER + TOTAL_REST;
 
@@ -53,6 +54,7 @@ public class AllSameHeaderValidatorTest {
         doc.parseHeader(1, HEADER_LINE);
         doc.parseDetail(2, DETAIL_LINE);
         doc.parseTotal(3, TOTAL_LINE);
+        
         doc.seal();
 
         // TEST & VERIFY
@@ -75,7 +77,7 @@ public class AllSameHeaderValidatorTest {
 
         final Uic301Document doc = new Uic301Document();
         doc.parseHeader(1, HEADER_LINE);
-        doc.parseDetail(2, "14121000000881185171100" + DETAIL_REST);
+        doc.parseDetail(2, "14121000011881180190100" + DETAIL_REST);
         doc.parseTotal(3, TOTAL_LINE);
         doc.seal();
 
@@ -87,7 +89,7 @@ public class AllSameHeaderValidatorTest {
                 .iterator().next();
         assertThat(violation.getMessage()).isEqualTo(
                 "Some lines do not contain the same information as the header (See log for all errors) - "
-                        + "First occurence = Rail Union Compiling mismatch: line #2, header='0087', detail='0088'");
+                        + "First occurence = Rail Union Compiling mismatch: line #2, header='1185', detail='1188'");
 
     }
 
@@ -123,7 +125,7 @@ public class AllSameHeaderValidatorTest {
 
         final Uic301Document doc = new Uic301Document();
         doc.parseHeader(1, HEADER_LINE);
-        doc.parseDetail(2, "14121000099991185171100" + DETAIL_REST);
+        doc.parseDetail(2, "14121000099991180190100" + DETAIL_REST);
         doc.parseTotal(3, TOTAL_LINE);
 
         // TEST & VERIFY
@@ -131,7 +133,7 @@ public class AllSameHeaderValidatorTest {
         assertThat(testee.isValid(doc, ctx)).isFalse();
         assertThat(ctx.getMessageParameters()).contains(entry(
                 AllSameHeader.MSG_KEY,
-                "Rail Union Compiling mismatch: line #2, header='0087', detail='9999'"));
+                "Rail Union Compiling mismatch: line #2, header='1185', detail='9999'"));
 
     }
 
@@ -145,7 +147,7 @@ public class AllSameHeaderValidatorTest {
 
         final Uic301Document doc = new Uic301Document();
         doc.parseHeader(1, HEADER_LINE);
-        doc.parseDetail(2, "14121000000879999171100" + DETAIL_REST);
+        doc.parseDetail(2, "14121000011859999171100" + DETAIL_REST);
         doc.parseTotal(3, TOTAL_LINE);
 
         // TEST & VERIFY
@@ -153,7 +155,7 @@ public class AllSameHeaderValidatorTest {
         assertThat(testee.isValid(doc, ctx)).isFalse();
         assertThat(ctx.getMessageParameters()).contains(entry(
                 AllSameHeader.MSG_KEY,
-                "Rail Union Receiving mismatch: line #2, header='1185', detail='9999'"));
+                "Rail Union Receiving mismatch: line #2, header='1180', detail='9999'"));
 
     }
 
@@ -167,7 +169,7 @@ public class AllSameHeaderValidatorTest {
 
         final Uic301Document doc = new Uic301Document();
         doc.parseHeader(1, HEADER_LINE);
-        doc.parseDetail(2, "14121000000871185171200" + DETAIL_REST);
+        doc.parseDetail(2, "14121000011851180190200" + DETAIL_REST);
         doc.parseTotal(3, TOTAL_LINE);
 
         // TEST & VERIFY
@@ -175,7 +177,7 @@ public class AllSameHeaderValidatorTest {
         assertThat(testee.isValid(doc, ctx)).isFalse();
         assertThat(ctx.getMessageParameters()).contains(entry(
                 AllSameHeader.MSG_KEY,
-                "Period mismatch: line #2, header='171100', detail='171200'"));
+                "Period mismatch: line #2, header='190100', detail='190200'"));
 
     }
 
@@ -212,14 +214,14 @@ public class AllSameHeaderValidatorTest {
         final Uic301Document doc = new Uic301Document();
         doc.parseHeader(1, HEADER_LINE);
         doc.parseDetail(2, DETAIL_LINE);
-        doc.parseTotal(3, "14131000099991185171100" + TOTAL_REST);
+        doc.parseTotal(3, "14131000099991180190100" + TOTAL_REST);
 
         // TEST & VERIFY
         final TestContext ctx = new TestContext();
         assertThat(testee.isValid(doc, ctx)).isFalse();
         assertThat(ctx.getMessageParameters()).contains(entry(
                 AllSameHeader.MSG_KEY,
-                "Rail Union Compiling mismatch: line #3, header='0087', total='9999'"));
+                "Rail Union Compiling mismatch: line #3, header='1185', total='9999'"));
 
     }
 
@@ -234,14 +236,14 @@ public class AllSameHeaderValidatorTest {
         final Uic301Document doc = new Uic301Document();
         doc.parseHeader(1, HEADER_LINE);
         doc.parseDetail(2, DETAIL_LINE);
-        doc.parseTotal(3, "14131000000879999171100" + TOTAL_REST);
+        doc.parseTotal(3, "14131000011859999171100" + TOTAL_REST);
 
         // TEST & VERIFY
         final TestContext ctx = new TestContext();
         assertThat(testee.isValid(doc, ctx)).isFalse();
         assertThat(ctx.getMessageParameters()).contains(entry(
                 AllSameHeader.MSG_KEY,
-                "Rail Union Receiving mismatch: line #3, header='1185', total='9999'"));
+                "Rail Union Receiving mismatch: line #3, header='1180', total='9999'"));
 
     }
 
@@ -256,14 +258,14 @@ public class AllSameHeaderValidatorTest {
         final Uic301Document doc = new Uic301Document();
         doc.parseHeader(1, HEADER_LINE);
         doc.parseDetail(2, DETAIL_LINE);
-        doc.parseTotal(3, "14131000000871185171200" + TOTAL_REST);
+        doc.parseTotal(3, "14131000011851180190200" + TOTAL_REST);
 
         // TEST & VERIFY
         final TestContext ctx = new TestContext();
         assertThat(testee.isValid(doc, ctx)).isFalse();
         assertThat(ctx.getMessageParameters()).contains(entry(
                 AllSameHeader.MSG_KEY,
-                "Period mismatch: line #3, header='171100', total='171200'"));
+                "Period mismatch: line #3, header='190100', total='190200'"));
 
     }
 

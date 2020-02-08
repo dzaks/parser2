@@ -24,11 +24,13 @@ import ch.sbb.fss.uic301.parser.Uic301Exception;
  */
 public class SameDetailsSumValidatorTest {
 
-    private static final String HEADER_LINE = "14111000000871185171100083955000001";
+    private static final String HEADER_LINE = "14111000011851180190100000049000001";
 
-    private static final String DETAIL_LINE = "14121000000871185171100007010000011850000000EUR01001000121000921300017112400877130401185000100008718980231420000017112200001000000121000000000000008700100011008700271110001210000000000000000012100100000000012100000000000000CH0000";
+    private static final String DETAIL_LINE = "14121000011851180190100003010000011801337801EUR01002000004200000600019022000850033200085000100004525401176322259719010900001000000004200000000000118500629301000000000000000042000000000000000000420050000000000210000000000000DE0050";
 
-    private static final String TOTAL_LINE = "141310000008711851711000EUR0100000001210000000000000000000001210000000000001000000013310";
+    private static final String TOTAL_LINE = "141310000118511801901000EUR0100000000042000000000000000000000000000000000211000000000399";
+    
+    private static final String TOTAL_LINE_WITH_ERROR = "141310000118511801901000EUR0100000000043000000000000000000000000000000000211000000000399";
 
     @Test
     public void testIsValidTrue() throws Uic301Exception {
@@ -62,9 +64,8 @@ public class SameDetailsSumValidatorTest {
 
         final Uic301Document doc = new Uic301Document();
         doc.parseHeader(1, HEADER_LINE);
-        doc.parseDetail(2,
-                "14121000000871185171100007010000011850000000EUR01001000121000921300017112400877130401185000100008718980231420000017112200001000000121000000000000008700100011008700271110001210000000000000000012100100000000012300000000000000CH0000");
-        doc.parseTotal(3, TOTAL_LINE);
+        doc.parseDetail(2, DETAIL_LINE);
+        doc.parseTotal(3, TOTAL_LINE_WITH_ERROR);
         doc.seal();
 
         // TEST & VERIFY
@@ -73,10 +74,11 @@ public class SameDetailsSumValidatorTest {
         assertThat(violations).hasSize(1);
         final ConstraintViolation<Uic301Document> violation = violations
                 .iterator().next();
+        System.out.println(violation.getMessage());
         final char decimalSeparator = new DecimalFormatSymbols(
                 Locale.getDefault()).getDecimalSeparator();
         assertThat(violation.getMessage()).isEqualTo(
-                "Some totals differ from the calculated details sum: Amount commission debited mismatch: total=12.1, sum details=12.3, Net balance amount mismatch: total=133.1, sum details=133.3"
+                "Some totals differ from the calculated details sum: Gross debit mismatch: total=000000000430, sum details=4.2"
                         .replace('.', decimalSeparator));
         assertThat(testee.isValid(doc, new TestContext())).isFalse();
 
