@@ -28,6 +28,9 @@ public final class Uic301Document implements Sealable {
     @XmlAttribute(name = "ignore-block")
     private Boolean ignoreBlock;
 
+    @XmlAttribute(name = "patched")
+    private boolean patched;
+    
     @XmlAttribute(name = "errorCount")
     private Integer errorCount;
 
@@ -305,6 +308,14 @@ public final class Uic301Document implements Sealable {
 
     public void setIgnoreBlock(Boolean ignoreBlock) {
         this.ignoreBlock = ignoreBlock;
+    }
+
+    public boolean getPatched() {
+        return patched;
+    }
+
+    public void setPatched(boolean patched) {
+        this.patched = patched;
     }
 
 }
