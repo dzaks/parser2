@@ -19,18 +19,19 @@ import org.junit.Test;
 import ch.sbb.fss.uic301.parser.Uic301Document;
 import ch.sbb.fss.uic301.parser.Uic301Exception;
 
+
 /**
- * Test for the {@link SameDetailsSumValidator} class.
+ * Test for the {@link ReceivingRuValidator} class.
  */
-public class SameDetailsSumValidatorTest {
+public class ReceivingRuValidatorTest {
 
-    private static final String HEADER_LINE = "14111000011851185190100000049000001";
+    private static final String HEADER_LINE = "14111000011801185190100000049000001";
+    private static final String DETAIL_LINE = "14121000011801185190100003010000011801337801EUR01002000004200000600019022000850033200085000100004525401176322259719010900001000000004200000000000118500629301000000000000000042000000000000000000420050000000000210000000000000DE0050";
+    private static final String TOTAL_LINE = "141310000118011851901000EUR0100000000042000000000000000000000000000000000211000000000399";
 
-    private static final String DETAIL_LINE = "14121000011851185190100003010000011801337801EUR01002000004200000600019022000850033200085000100004525401176322259719010900001000000004200000000000118500629301000000000000000042000000000000000000420050000000000210000000000000DE0050";
-
-    private static final String TOTAL_LINE = "141310000118511851901000EUR0100000000042000000000000000000000000000000000211000000000399";
-    
-    private static final String TOTAL_LINE_WITH_ERROR = "141310000118511851901000EUR0100000000043000000000000000000000000000000000211000000000399";
+    private static final String HEADER_LINE_WITH_ERROR = "14111000011851180190100000049000001";
+    private static final String DETAIL_WITH_ERROR = "14121000011851180190100003010000011801337801EUR01002000004200000600019022000850033200085000100004525401176322259719010900001000000004200000000000118500629301000000000000000042000000000000000000420050000000000210000000000000DE0050";
+    private static final String TOTAL_LINE_WITH_ERROR = "141310000118511801901000EUR0100000000042000000000000000000000000000000000211000000000399";
 
     @Test
     public void testIsValidTrue() throws Uic301Exception {
@@ -60,11 +61,10 @@ public class SameDetailsSumValidatorTest {
         // PREPARE
         final Validator validator = Validation.buildDefaultValidatorFactory()
                 .getValidator();
-        final SameDetailsSumValidator testee = new SameDetailsSumValidator();
-
+  
         final Uic301Document doc = new Uic301Document();
-        doc.parseHeader(1, HEADER_LINE);
-        doc.parseDetail(2, DETAIL_LINE);
+        doc.parseHeader(1, HEADER_LINE_WITH_ERROR);
+        doc.parseDetail(2, DETAIL_WITH_ERROR);
         doc.parseTotal(3, TOTAL_LINE_WITH_ERROR);
         doc.seal();
 
@@ -74,13 +74,7 @@ public class SameDetailsSumValidatorTest {
         assertThat(violations).hasSize(1);
         final ConstraintViolation<Uic301Document> violation = violations
                 .iterator().next();
-        final char decimalSeparator = new DecimalFormatSymbols(
-                Locale.getDefault()).getDecimalSeparator();
-        assertThat(violation.getMessage()).isEqualTo(
-                "Some totals differ from the calculated details sum: Gross debit mismatch: total=000000000430, sum details=4.2"
-                        .replace('.', decimalSeparator));
-        assertThat(testee.isValid(doc, new TestContext())).isFalse();
-
+        assertThat(violation.getMessage()).isEqualTo("The receving RU is 1180. Only documents for SBB 1185 can be processed.");
     }
 
     private static class TestContext

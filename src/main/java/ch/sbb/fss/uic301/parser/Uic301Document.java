@@ -10,6 +10,7 @@ import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import ch.sbb.fss.uic301.parser.constraints.AllSameHeader;
+import ch.sbb.fss.uic301.parser.constraints.RuRecieving;
 import ch.sbb.fss.uic301.parser.constraints.SameDetailSums;
 
 /**
@@ -17,6 +18,7 @@ import ch.sbb.fss.uic301.parser.constraints.SameDetailSums;
  */
 @AllSameHeader(block=true)
 @SameDetailSums(block=true)
+@RuRecieving(sbb="1185", block=true)
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = Uic301Document.TAG)
 public final class Uic301Document implements Sealable {

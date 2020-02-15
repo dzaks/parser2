@@ -25,16 +25,16 @@ import ch.sbb.fss.uic301.parser.Uic301Exception;
  */
 public class AllSameHeaderValidatorTest {
 
-    private static final String HEADER_LINE = "14111000011851180190100000049000001";
+    private static final String HEADER_LINE = "14111000011851185190100000049000001";
 
-    private static final String DETAIL_HEADER = "14121000011851180190100";
+    private static final String DETAIL_HEADER = "14121000011851185190100";
                                                 
 
-    private static final String DETAIL_REST = "003010000011801337801EUR01002000004200000600019022000850033200085000100004525401176322259719010900001000000004200000000000118500629301000000000000000042000000000000000000420050000000000210000000000000DE0050";
+    private static final String DETAIL_REST = "003010000011851337801EUR01002000004200000600019022000850033200085000100004525401176322259719010900001000000004200000000000118500629301000000000000000042000000000000000000420050000000000210000000000000DE0050";
 
     private static final String DETAIL_LINE = DETAIL_HEADER + DETAIL_REST;
 
-    private static final String TOTAL_HEADER = "14131000011851180190100";
+    private static final String TOTAL_HEADER = "14131000011851185190100";
 
     private static final String TOTAL_REST = "0EUR0100000000042000000000000000000000000000000000211000000000399";
 
@@ -77,7 +77,7 @@ public class AllSameHeaderValidatorTest {
 
         final Uic301Document doc = new Uic301Document();
         doc.parseHeader(1, HEADER_LINE);
-        doc.parseDetail(2, "14121000011881180190100" + DETAIL_REST);
+        doc.parseDetail(2, "14121000011881185190100" + DETAIL_REST);
         doc.parseTotal(3, TOTAL_LINE);
         doc.seal();
 
@@ -125,7 +125,7 @@ public class AllSameHeaderValidatorTest {
 
         final Uic301Document doc = new Uic301Document();
         doc.parseHeader(1, HEADER_LINE);
-        doc.parseDetail(2, "14121000099991180190100" + DETAIL_REST);
+        doc.parseDetail(2, "14121000099991185190100" + DETAIL_REST);
         doc.parseTotal(3, TOTAL_LINE);
 
         // TEST & VERIFY
@@ -155,7 +155,7 @@ public class AllSameHeaderValidatorTest {
         assertThat(testee.isValid(doc, ctx)).isFalse();
         assertThat(ctx.getMessageParameters()).contains(entry(
                 AllSameHeader.MSG_KEY,
-                "Rail Union Receiving mismatch: line #2, header='1180', detail='9999'"));
+                "Rail Union Receiving mismatch: line #2, header='1185', detail='9999'"));
 
     }
 
@@ -169,7 +169,7 @@ public class AllSameHeaderValidatorTest {
 
         final Uic301Document doc = new Uic301Document();
         doc.parseHeader(1, HEADER_LINE);
-        doc.parseDetail(2, "14121000011851180190200" + DETAIL_REST);
+        doc.parseDetail(2, "14121000011851185190200" + DETAIL_REST);
         doc.parseTotal(3, TOTAL_LINE);
 
         // TEST & VERIFY
@@ -214,7 +214,7 @@ public class AllSameHeaderValidatorTest {
         final Uic301Document doc = new Uic301Document();
         doc.parseHeader(1, HEADER_LINE);
         doc.parseDetail(2, DETAIL_LINE);
-        doc.parseTotal(3, "14131000099991180190100" + TOTAL_REST);
+        doc.parseTotal(3, "14131000099991185190100" + TOTAL_REST);
 
         // TEST & VERIFY
         final TestContext ctx = new TestContext();
@@ -243,7 +243,7 @@ public class AllSameHeaderValidatorTest {
         assertThat(testee.isValid(doc, ctx)).isFalse();
         assertThat(ctx.getMessageParameters()).contains(entry(
                 AllSameHeader.MSG_KEY,
-                "Rail Union Receiving mismatch: line #3, header='1180', total='9999'"));
+                "Rail Union Receiving mismatch: line #3, header='1185', total='9999'"));
 
     }
 
@@ -258,7 +258,7 @@ public class AllSameHeaderValidatorTest {
         final Uic301Document doc = new Uic301Document();
         doc.parseHeader(1, HEADER_LINE);
         doc.parseDetail(2, DETAIL_LINE);
-        doc.parseTotal(3, "14131000011851180190200" + TOTAL_REST);
+        doc.parseTotal(3, "14131000011851185190200" + TOTAL_REST);
 
         // TEST & VERIFY
         final TestContext ctx = new TestContext();
