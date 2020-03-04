@@ -33,6 +33,9 @@ public final class Uic301Document implements Sealable {
     @XmlAttribute(name = "patched")
     private boolean patched;
     
+    @XmlAttribute(name = "orignalCompilingRu")
+    private String orignalCompilingRu; 
+    
     @XmlAttribute(name = "errorCount")
     private Integer errorCount;
 
@@ -318,6 +321,21 @@ public final class Uic301Document implements Sealable {
 
     public void setPatched(boolean patched) {
         this.patched = patched;
+    }
+
+    public String getOrignalCompilingRu() {
+        return orignalCompilingRu != null? orignalCompilingRu:getHeader().getRailUnionCompiling();
+    }
+
+    public void setOrignalCompilingRu(String orignalCompilingRu) {
+        this.orignalCompilingRu = orignalCompilingRu;
+    }
+
+    public String getCompilingRu() {
+        if(orignalCompilingRu == null) {
+            return this.getHeader().getRailUnionCompiling();
+        }
+        return orignalCompilingRu;
     }
 
 }
