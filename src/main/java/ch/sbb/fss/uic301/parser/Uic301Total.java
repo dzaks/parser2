@@ -576,6 +576,8 @@ public final class Uic301Total implements ParsedLineItem, Sealable, Uic301Docume
 
     /**
      * Validates this object and saves the violations as errors.
+     * 
+     * @param validator Validator to use.
      */
     public void validate(@NotNull final Validator validator) {
         assertNotSealed();
