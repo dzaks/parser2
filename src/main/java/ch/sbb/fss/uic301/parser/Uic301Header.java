@@ -391,6 +391,8 @@ public final class Uic301Header implements Sealable, Uic301DocumentItem {
 
     /**
      * Validates this object and saves the violations as errors.
+     *
+     * @param validator Validator to use.
      */
     public void validate(@NotNull final Validator validator) {
         assertNotSealed();
