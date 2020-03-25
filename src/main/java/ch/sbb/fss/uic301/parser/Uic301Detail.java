@@ -240,5 +240,7 @@ public interface Uic301Detail extends ParsedLineItem, Uic301DocumentItem {
     
     public void setPrimaryRouteFirstSectionRU(String string);
 
+    boolean isAmountMissing();
+
 
 }

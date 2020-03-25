@@ -364,7 +364,7 @@ public final class Uic301G5Detail implements Uic301Detail, Sealable {
     private String dayOfTravel;
 
     /**
-     * Departure country code, with preceding zeroes.<br>
+     * Departure RU Rics<br>
      * [#19(1), 4 characters, Mandatory]<br>
      */
     @Label("Departure location RU code")
@@ -372,7 +372,7 @@ public final class Uic301G5Detail implements Uic301Detail, Sealable {
     @Tooltip("Departure location RU code. [19(1)]")
     @TableColumn(pos = 20, width = 50)
     @NotNull
-    @FixedLenDigitsStr(4)
+    @RicsCodeStr
     @XmlAttribute(name = "_19-1")
     private String departureLocationRU;
 
@@ -398,7 +398,7 @@ public final class Uic301G5Detail implements Uic301Detail, Sealable {
     private String reserved3;
 
     /**
-     * Destination country code, with preceding zeroes.<br>
+     * Destination location RU Rics code.<br>
      * [#21(1), 4 characters, Mandatory]<br>
      */
     @Label("Destination location RU  code")
@@ -406,7 +406,7 @@ public final class Uic301G5Detail implements Uic301Detail, Sealable {
     @Tooltip("Destination location RU code [21(1)]")
     @TableColumn(pos = 22, width = 50)
     @NotNull
-    @FixedLenDigitsStr(4)
+    @RicsCodeStr
     @XmlAttribute(name = "_21-1")
     private String destinationLocationRU;
 
@@ -1867,6 +1867,24 @@ public final class Uic301G5Detail implements Uic301Detail, Sealable {
     @Override
     public boolean isSealed() {
         return sealed;
+    }
+    
+    
+    @Override
+    public boolean isAmountMissing() {
+        if(getGrossAmountToBeCreditedValue() != null && getGrossAmountToBeCreditedValue().doubleValue() > 0.0) {
+            return false;
+        }
+        if(getGrossAmountToBeDebitedValue() != null && getGrossAmountToBeDebitedValue().doubleValue() > 0.0) {
+            return false;
+        }
+        if(getAmountOfCommissionToBeCreditedTheServiceProvidingRUValue() != null && getAmountOfCommissionToBeCreditedTheServiceProvidingRUValue().doubleValue() > 0.0) {
+            return false;
+        }    
+        if(getAmountOfCommissionToBeDebitedTheServiceProvidingRUValue() != null && getAmountOfCommissionToBeDebitedTheServiceProvidingRUValue().doubleValue() > 0.0) {
+            return false;
+        } 
+        return true;
     }
 
     /**

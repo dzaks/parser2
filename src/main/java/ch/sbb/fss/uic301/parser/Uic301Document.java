@@ -18,7 +18,7 @@ import ch.sbb.fss.uic301.parser.constraints.SameDetailSums;
  */
 @AllSameHeader(block=true)
 @SameDetailSums(block=true)
-@RuRecieving(sbb="1185", block=true)
+@RuRecieving(sbb="85", block=true)
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement(name = Uic301Document.TAG)
 public final class Uic301Document implements Sealable {

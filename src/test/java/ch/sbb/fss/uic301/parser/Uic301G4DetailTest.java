@@ -1,6 +1,7 @@
 package ch.sbb.fss.uic301.parser;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertTrue;
 
 import java.math.BigDecimal;
 import java.util.Set;
@@ -1446,6 +1447,83 @@ public class Uic301G4DetailTest {
                 amountOfCommissionToBeDebitedTheServiceProvidingRU,
                 amountOfCommissionToBeCreditedTheServiceProvidingRU, reserved4,
                 countryCode, serviceBrandCode, lineNo);
+
+    }
+
+    @Test
+    public void testAmountMissing() {
+
+        // PREPARE
+        final String identifier = "141210000";
+        final String railUnionCompiling = "0087";
+        final String railUnionReceiving = "1185";
+        final String period = "171100";
+        final String reserved1 = "0";
+        final String typeOfService = "07";
+        final String typeofTransaction = "0";
+        final String distributionChannel = "1";
+        final String codeIssuingOffice = "00000";
+        final String requestingTerminalRU = "1185";
+        final String requestingTerminalNo = "0000000";
+        final String statementCurrency = "EUR";
+        final String statementPeriod = "01";
+        final String classOrCategory = "001";
+        final String unitPrice = "00012100";
+        final String trainNumber = "09213";
+        final String coachNumber = "000";
+        final String dayOfTravel = "171124";
+        final String departureLocationRU = "0087";
+        final String departureLocationStation = "71304";
+        final String reserved2 = "0";
+        final String destinationLocationRU = "1185";
+        final String destinationLocationStation = "00010";
+        final String reserved3 = "0";
+        final String referenceNumber = "00871898023142";
+        final String dialogueNumber = "00000";
+        final String transactionDate = "171122";
+        final String numberOfServices = "00001";
+        final String adjustment = "0";
+        final String grossAmountToBeDebited = "000000";
+        final String grossAmountToBeCredited = "0000000000";
+        final String serviceProvidingRU = "0087";
+        final String afterSalesFeeSharePercentage = "00";
+        final String tariffCode = "10001";
+        final String typeOfJourney = "1";
+        final String primaryRouteFirstSectionRU = "0087";
+        final String primaryRouteFirstSectionSerialNo = "00271";
+        final String passengerCatergory = "11";
+        final String amountUnitShare = "00012100";
+        final String grossAmountToBeDebitedTheServiceProvidingRU = "0000000000";
+        final String grossAmountToBeCreditedTheServiceProvidingRU = "000000";
+        final String percentageCommissionRateOfServiceProvidingRU = "1000";
+        final String amountOfCommissionToBeDebitedTheServiceProvidingRU = "000000";
+        final String amountOfCommissionToBeCreditedTheServiceProvidingRU = "0000000000";
+        final String reserved4 = "000";
+        final String countryCode = "CH";
+        final String serviceBrandCode = "0000";
+        final int lineNo = -1;
+
+        final Uic301G4Detail testee = new Uic301G4Detail(identifier,
+                railUnionCompiling, railUnionReceiving, period, reserved1,
+                typeOfService, typeofTransaction, distributionChannel,
+                codeIssuingOffice, requestingTerminalRU, requestingTerminalNo,
+                statementCurrency, statementPeriod, classOrCategory, unitPrice,
+                trainNumber, coachNumber, dayOfTravel, departureLocationRU,
+                departureLocationStation, reserved2, destinationLocationRU,
+                destinationLocationStation, reserved3, referenceNumber,
+                dialogueNumber, transactionDate, numberOfServices, adjustment,
+                grossAmountToBeDebited, grossAmountToBeCredited,
+                serviceProvidingRU, afterSalesFeeSharePercentage, tariffCode,
+                typeOfJourney, primaryRouteFirstSectionRU,
+                primaryRouteFirstSectionSerialNo, passengerCatergory,
+                amountUnitShare, grossAmountToBeDebitedTheServiceProvidingRU,
+                grossAmountToBeCreditedTheServiceProvidingRU,
+                percentageCommissionRateOfServiceProvidingRU,
+                amountOfCommissionToBeDebitedTheServiceProvidingRU,
+                amountOfCommissionToBeCreditedTheServiceProvidingRU, reserved4,
+                countryCode, serviceBrandCode, lineNo);
+
+        assertTrue("Is missing", testee.isAmountMissing());
 
     }
 

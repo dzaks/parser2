@@ -64,13 +64,13 @@ public class Uic301TotalTest {
 
         // TEST
         final Set<ConstraintViolation<Uic301Total>> violations = VALIDATOR
-                .validate(new Uic301Total("141310000", "0X87", "1185", "171100",
+                .validate(new Uic301Total("141310000", "0_87", "1185", "171100",
                         "0", "EUR", "01", "000462312415", "000052549130",
                         "00004985964", "00043878516", "1", "000370870733", -1));
 
         // VERIFY
         assertSingleViolation(violations, "railUnionCompiling",
-                "Wrong RICS code (0X87)");
+                "Wrong RICS code (0_87)");
 
     }
 

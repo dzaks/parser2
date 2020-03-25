@@ -50,7 +50,7 @@ public class Uic301DocumentsTest {
         testee.seal();
 
         // VERIFY
-        assertThat(testee.getErrorCount()).isEqualTo(21);
+        assertThat(testee.getErrorCount()).isEqualTo(17);
 
     }
 

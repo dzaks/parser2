@@ -20,7 +20,7 @@ import javax.validation.constraints.Size;
 /**
  * Unique RICS code (4 digits).
  */
-@Pattern(regexp = "[0-9]*")
+@Pattern(regexp = "[a-zA-Z0-9]*")
 @Size(min = 4, max = 4)
 @Documented
 @ReportAsSingleViolation

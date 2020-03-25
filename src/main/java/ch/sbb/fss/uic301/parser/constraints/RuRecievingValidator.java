@@ -18,7 +18,7 @@ public class RuRecievingValidator  implements ConstraintValidator<SameDetailSums
         
         String defaultValue = Uic301Document.class.getAnnotation(RuRecieving.class).sbb();
         
-        if(!Objects.equals(recievingRu, defaultValue)) {
+        if(!recievingRu.endsWith(defaultValue)) {
             
             final String msg = MessageFormat.format(
                     "The receving RU is {0}. Only documents for SBB {1} can be processed.",

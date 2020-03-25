@@ -59,10 +59,10 @@ public class Uic301HeaderTest {
 
         // TEST
         final Set<ConstraintViolation<Uic301Header>> violations = VALIDATOR
-                .validate(new Uic301Header("141110000", "0X87", "1185", "171100", "083955", "000001", -1));
+                .validate(new Uic301Header("141110000", "0_87", "1185", "171100", "083955", "000001", -1));
 
         // VERIFY
-        assertSingleViolation(violations, "railUnionCompiling", "Wrong RICS code (0X87)");
+        assertSingleViolation(violations, "railUnionCompiling", "Wrong RICS code (0_87)");
 
     }
 

@@ -1,6 +1,8 @@
 package ch.sbb.fss.uic301.parser;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 import java.math.BigDecimal;
 import java.util.Set;
@@ -1033,6 +1035,72 @@ public class Uic301G5DetailTest {
                 primaryRouteFirstSectionSerialNo, passengerCatergory, serviceProvidingRUsCommissionRate,
                 amountOfCommissionToBeDebitedTheServiceProvidingRU, amountOfCommissionToBeCreditedTheServiceProvidingRU,
                 primaryRouteSecondSectionRU, primaryRouteSecondSectionSerialNo, lineNo);
+
+    }
+    
+    @Test
+    public void testAmountMissing() {
+
+        // PREPARE
+        final String identifier = "142210000";
+        final String railUnionCompiling = "0087";
+        final String railUnionReceiving = "1185";
+        final String period = "171100";
+        final String reserved1 = "0";
+        final String typeOfService = "05";
+        final String typeofTransaction = "1";
+        final String distributionChannel = "1";
+        final String codeIssuingOffice = "00000";
+        final String reserved2 = "0";
+        final String countryCode = "IT";
+        final String serviceBrandCode = "0000";
+        final String statementCurrency = "EUR";
+        final String statementPeriod = "01";
+        final String tariffCode = "10001";
+        final String typeOfJourney = "1";
+        final String classOrCategory = "002";
+        final String amountUnitShare = "00003040";
+        final String trainNumber = "09211";
+        final String coachNumber = "000";
+        final String dayOfTravel = "171223";
+        final String departureLocationRU = "1185";
+        final String departureLocationStation = "00010";
+        final String reserved3 = "0";
+        final String destinationLocationRU = "1185";
+        final String destinationLocationStation = "03000";
+        final String typeIdentifier = "1";
+        final String numberIdentifiers = "00870933451367";
+        final String dialogueNumber = "00059";
+        final String transactionDate = "171105";
+        final String numberOfServices = "00002";
+        final String adjustment = "0";
+        final String grossAmountToBeDebited = "000000";
+        final String grossAmountToBeCredited = "0000000000";
+        final String afterSalesPercentageFee = "00";
+        final String transactionRU = "0083";
+        final String primaryRouteFirstSectionRU = "1185";
+        final String primaryRouteFirstSectionSerialNo = "02089";
+        final String passengerCatergory = "11";
+        final String serviceProvidingRUsCommissionRate = "0500";
+        final String amountOfCommissionToBeDebitedTheServiceProvidingRU = "0000000000";
+        final String amountOfCommissionToBeCreditedTheServiceProvidingRU = "0000000";
+        final String primaryRouteSecondSectionRU = "0000";
+        final String primaryRouteSecondSectionSerialNo = "00000";
+        final int lineNo = -1;
+
+        final Uic301G5Detail testee = new Uic301G5Detail(identifier, railUnionCompiling, railUnionReceiving, period,
+                reserved1, typeOfService, typeofTransaction, distributionChannel, codeIssuingOffice, reserved2,
+                countryCode, serviceBrandCode, statementCurrency, statementPeriod, tariffCode, typeOfJourney,
+                classOrCategory, amountUnitShare, trainNumber, coachNumber, dayOfTravel, departureLocationRU,
+                departureLocationStation, reserved3, destinationLocationRU, destinationLocationStation,
+                typeIdentifier, numberIdentifiers, dialogueNumber, transactionDate, numberOfServices, adjustment,
+                grossAmountToBeDebited, grossAmountToBeCredited, afterSalesPercentageFee, transactionRU,
+                primaryRouteFirstSectionRU, primaryRouteFirstSectionSerialNo, passengerCatergory,
+                serviceProvidingRUsCommissionRate, amountOfCommissionToBeDebitedTheServiceProvidingRU,
+                amountOfCommissionToBeCreditedTheServiceProvidingRU, primaryRouteSecondSectionRU,
+                primaryRouteSecondSectionSerialNo, lineNo);
+
+      assertTrue("Is missing", testee.isAmountMissing());
 
     }
 
