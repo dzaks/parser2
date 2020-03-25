@@ -54,6 +54,10 @@ public final class Uic301Utils {
      * 
      * @param validator Validator to use.
      * @param obj Object to validate.
+     *
+     * @return List of field errors.
+     *
+     * @param <T> Type of object being validated.
      */
     public static <T> List<FieldError> validate(final Validator validator, final T obj) {
         final List<FieldError> errors = new ArrayList<>();
