@@ -74,7 +74,7 @@ public class ReceivingRuValidatorTest {
         assertThat(violations).hasSize(1);
         final ConstraintViolation<Uic301Document> violation = violations
                 .iterator().next();
-        assertThat(violation.getMessage()).isEqualTo("The receving RU is 1180. Only documents for SBB 1185 can be processed.");
+        assertThat(violation.getMessage()).isEqualTo("The receving RU is 1180. Only documents for SBB **85 can be processed.");
     }
 
     private static class TestContext

@@ -510,7 +510,7 @@ public class Uic301G5DetailTest {
                 "0500", "0000000000", "0000000304", "0000", "00000", -1));
 
         // VERIFY
-        assertSingleViolation(violations, "departureLocationRU", "Expected exactly 4 digit(s), but was: 'x'");
+        assertSingleViolation(violations, "departureLocationRU", "Wrong RICS code (x)");
 
     }
 
@@ -555,7 +555,7 @@ public class Uic301G5DetailTest {
                 "0500", "0000000000", "0000000304", "0000", "00000", -1));
 
         // VERIFY
-        assertSingleViolation(violations, "destinationLocationRU", "Expected exactly 4 digit(s), but was: 'x'");
+        assertSingleViolation(violations, "destinationLocationRU", "Wrong RICS code (x)");
 
     }
 

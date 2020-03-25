@@ -636,7 +636,7 @@ public class Uic301G4DetailTest {
 
         // VERIFY
         assertSingleViolation(violations, "departureLocationRU",
-                "Expected exactly 4 digit(s), but was: 'x'");
+                "Wrong RICS code (x)");
 
     }
 
@@ -699,7 +699,7 @@ public class Uic301G4DetailTest {
 
         // VERIFY
         assertSingleViolation(violations, "destinationLocationRU",
-                "Expected exactly 4 digit(s), but was: 'x'");
+                "Wrong RICS code (x)");
 
     }
 

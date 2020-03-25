@@ -22,7 +22,7 @@ public class RuRecievingValidator  implements ConstraintValidator<SameDetailSums
             
             final String msg = MessageFormat.format(
                     "The receving RU is {0}. Only documents for SBB {1} can be processed.",
-                    recievingRu, defaultValue);
+                    recievingRu, "**"+defaultValue);
             
             final HibernateConstraintValidatorContext ctx = context
                     .unwrap(HibernateConstraintValidatorContext.class);
