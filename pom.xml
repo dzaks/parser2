@@ -6,7 +6,7 @@
 
 	<groupId>ch.sbb.fss</groupId>
 	<artifactId>fss-uic301-parser</artifactId>
-	<version>0.1.0-SNAPSHOT</version>
+	<version>0.1.0</version>
 	<description>FSS UIC 301 Parser</description>
 
 	<distributionManagement>
@@ -130,9 +130,9 @@
 	</dependencies>
 
 	<scm>
-		<connection>scm:git:https://dimitrij-zaks-lhind@bitbucket.org/lhlogistik/fss-uic301-parser.git</connection>
+		<connection>scm:git:https://bitbucket.org/lhlogistik/fss-uic301-parser.git</connection>
 		<url>https://bitbucket.org/lhlogistik/fss-uic301-parser/</url>
-		<developerConnection>scm:git:https://dimitrij-zaks-lhind@bitbucket.org/lhlogistik/fss-uic301-parser.git</developerConnection>
+		<developerConnection>scm:git:https://bitbucket.org/lhlogistik/fss-uic301-parser.git</developerConnection>
 	</scm>
 
 	<build>
