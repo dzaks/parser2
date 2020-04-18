@@ -9,21 +9,21 @@
 	<version>0.1.0-SNAPSHOT</version>
 	<description>FSS UIC 301 Parser</description>
 
-    <distributionManagement>
-        <repository>
-            <id>sbbaruba-maven-private</id>
-            <url>https://lhlogistik.jfrog.io/lhlogistik/sbbaruba-maven-private</url>
-        </repository>
-        <snapshotRepository>
-            <id>sbbaruba-maven-private</id>
-            <url>https://lhlogistik.jfrog.io/lhlogistik/sbbaruba-maven-private</url>
-            <uniqueVersion>false</uniqueVersion>
-        </snapshotRepository>
-    </distributionManagement>
+	<distributionManagement>
+		<repository>
+			<id>sbbaruba-maven-private</id>
+			<url>https://lhlogistik.jfrog.io/lhlogistik/sbbaruba-maven-private</url>
+		</repository>
+		<snapshotRepository>
+			<id>sbbaruba-maven-private</id>
+			<url>https://lhlogistik.jfrog.io/lhlogistik/sbbaruba-maven-private</url>
+			<uniqueVersion>false</uniqueVersion>
+		</snapshotRepository>
+	</distributionManagement>
 
 	<properties>
-        <java.version>1.8</java.version>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.version>1.8</java.version>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 	</properties>
 
@@ -129,6 +129,12 @@
 
 	</dependencies>
 
+	<scm>
+		<connection>scm:git:https://dimitrij-zaks-lhind@bitbucket.org/lhlogistik/fss-uic301-parser.git</connection>
+		<url>https://bitbucket.org/lhlogistik/fss-uic301-parser/</url>
+		<developerConnection>scm:git:https://dimitrij-zaks-lhind@bitbucket.org/lhlogistik/fss-uic301-parser.git</developerConnection>
+	</scm>
+
 	<build>
 
 		<plugins>
@@ -169,6 +175,16 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-release-plugin</artifactId>
+				<configuration>
+					<tagNameFormat>v@{project.version}</tagNameFormat>
+					<autoVersionSubmodules>true</autoVersionSubmodules>
+					<releaseProfiles>releases</releaseProfiles>
+				</configuration>
 			</plugin>
 
 		</plugins>

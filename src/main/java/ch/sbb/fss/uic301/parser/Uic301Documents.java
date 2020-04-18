@@ -20,6 +20,8 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement(name = Uic301Documents.TAG)
 public final class Uic301Documents implements Sealable {
 
+    public static final int FILE_HEADER_TOLERANCE = 5;
+    
     public static final String TAG = "documents";
 
     private transient boolean sealed;
@@ -40,7 +42,7 @@ public final class Uic301Documents implements Sealable {
     public Uic301Documents() {
         super();
         sealed = false;
-        currentState = Uic301ParserState.TOTAL;
+        currentState = Uic301ParserState.INIT;
         documents = new ArrayList<>();
     }
 
@@ -121,7 +123,7 @@ public final class Uic301Documents implements Sealable {
     public final void parse(final int lineNo, final String line) throws Uic301Exception {
 
         assertNotSealed();
-
+ 
         if (Uic301Header.isHeader(line)) {
             Uic301ParserState.verifyTransition(lineNo, currentState, Uic301ParserState.HEADER);
             currentState = Uic301ParserState.HEADER;
@@ -136,7 +138,7 @@ public final class Uic301Documents implements Sealable {
             Uic301ParserState.verifyTransition(lineNo, currentState, Uic301ParserState.TOTAL);
             currentState = Uic301ParserState.TOTAL;
             currentDoc.parseTotal(lineNo, line);
-        } else {
+        } else if (currentState != Uic301ParserState.INIT || lineNo > FILE_HEADER_TOLERANCE) {
             throw new Uic301Exception("Unknown identifier in line # " + lineNo + ": " + line);
         }
 
