@@ -3,6 +3,7 @@ package ch.sbb.fss.uic301.parser;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.atomic.AtomicInteger;
 
 import javax.validation.Validator;
 import javax.xml.bind.Unmarshaller;
@@ -256,5 +257,19 @@ public final class Uic301Documents implements Sealable {
         Uic301Totals copy = new Uic301Totals();
         totals.getList().forEach(t -> copy.add(new Uic301Total(t)));
         return copy;
+    }
+    
+    
+    public static Uic301Document merge(Uic301Document doc1, Uic301Document doc2, Validator validator) {
+        Uic301Document copy1 = new Uic301Document(copyHeader(doc1.getHeader()), copyDetails(doc1.getDetails()), copyTotals(doc1.getTotals()));
+        Uic301Document copy2 = new Uic301Document(copyHeader(doc2.getHeader()), copyDetails(doc2.getDetails()), copyTotals(doc2.getTotals()));
+        copy2.getDetails().getList().forEach(d -> copy1.getDetails().add(d));
+        copy1.getTotals().merge(copy2.getTotals().getList().get(0));
+        AtomicInteger ai = new AtomicInteger(1);
+        copy1.getDetails().getList().forEach(l -> l.setParsedLineNo(ai.getAndIncrement()));
+        copy1.getTotals().getList().forEach(t -> t.setParsedLineNo(ai.getAndIncrement()));
+        copy1.validate(validator);
+        copy1.seal();
+        return copy1;
     }
 }

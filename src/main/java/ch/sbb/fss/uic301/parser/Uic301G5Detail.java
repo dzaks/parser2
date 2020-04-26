@@ -1914,6 +1914,11 @@ public final class Uic301G5Detail implements Uic301Detail, Sealable {
         }
         sealedAttributes.add(name);
     }
+    
+    public void setParsedLineNo(int parsedLineNo) {
+        this.parsedLineNo = parsedLineNo;
+    }
+
 
     /**
      * Creates a new detail line by parsing a string.

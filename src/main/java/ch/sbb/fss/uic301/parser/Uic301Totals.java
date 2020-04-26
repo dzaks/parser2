@@ -198,6 +198,39 @@ public final class Uic301Totals implements Sealable  {
             throw new IllegalStateException("The class is sealed. No more changes are allowed.");
         }
     }
+    
+    
+    /**
+     * Adds another total.
+     * 
+     * @param totalToMerge
+     *            Total to add.
+     */
+    public final void merge(@NotNull final Uic301Total totalToMerge) {
+        assertNotSealed();
+        if(list.isEmpty()) {
+            list.add(totalToMerge);
+        } else {
+            Uic301Total current = list.get(0) ;
+            Uic301Total merged = new Uic301Total(current.getIdentifier(), current.getRailUnionCompiling(), current.getRailUnionReceiving(), 
+                    current.getPeriod(), current.getReserved(),
+                    current.getStatementCurrency(), current.getStatementPeriod(), 
+                    Uic301Utils.addAmounts("grossDebit", current.getGrossDebit(), totalToMerge.getGrossDebit()), 
+                    Uic301Utils.addAmounts("grossCredit", current.getGrossCredit(), totalToMerge.getGrossCredit()), 
+                    Uic301Utils.addAmounts("amountCommissionDebited", current.getAmountCommissionDebited(), totalToMerge.getAmountCommissionDebited()), 
+                    Uic301Utils.addAmounts("amountCommissionCredited", current.getAmountCommissionCredited(), totalToMerge.getAmountCommissionCredited()), 
+  
+                    current.getDebitCreditBalance(), 
+ 
+                    Uic301Utils.addAmounts("netBalanceAmount", current.getNetBalanceAmount(), totalToMerge.getNetBalanceAmount()), 
+
+                    current.getParsedLineNo());
+            list.clear();
+            list.add(merged);
+        }
+    }
+    
+    
 
 
 }

@@ -14,6 +14,8 @@ import javax.validation.ConstraintViolation;
 import javax.validation.Validator;
 import javax.xml.bind.annotation.XmlAttribute;
 
+import org.apache.commons.lang3.StringUtils;
+
 /**
  * Utilities for the package.
  */
@@ -35,6 +37,7 @@ public final class Uic301Utils {
                     "Failed to convert value for field '" + name + "' into an integer: '" + str + "'", ex);
         }
     }
+   
 
     public static BigDecimal bigDecimalOf(final String name, final String str, final int scale) {
         if (str == null) {
@@ -106,6 +109,21 @@ public final class Uic301Utils {
         field.setAccessible(true);
         XmlAttribute a = field.getAnnotation(XmlAttribute.class);
         return a != null ? a.name() : field.getName();
+    }
+    
+    static String addAmounts(String filedName, String a1, String a2) {
+        long l1;
+        long l2;
+        try {
+            l1 = Long.parseLong(a1);
+            l2 = Long.parseLong(a2);
+            long sum = l1 + l2;
+            int stringlegth = a1.length();
+            return StringUtils.leftPad(Long.toString(sum), stringlegth, "0");
+        } catch (final NumberFormatException ex) {
+            throw new RuntimeException(
+                    "Failed to add '" + filedName + "' of totals ");
+        }
     }
 
 }

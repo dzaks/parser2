@@ -2113,4 +2113,8 @@ public final class Uic301G4Detail implements Uic301Detail, Sealable {
         return line != null && (line.startsWith(G4) || line.startsWith(G4_DB));
     }
 
+    public void setParsedLineNo(int parsedLineNo) {
+        this.parsedLineNo = parsedLineNo;
+    }
+
 }

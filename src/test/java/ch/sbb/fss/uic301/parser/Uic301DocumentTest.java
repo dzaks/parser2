@@ -1,6 +1,7 @@
 package ch.sbb.fss.uic301.parser;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import javax.validation.Validation;
@@ -116,6 +117,26 @@ public class Uic301DocumentTest {
         // VERIFY
         assertTrue(copy.getIgnoreBlock());
 
+    }
+    
+    @Test
+    public void testMerge() {
+        // PREPARE
+        final Uic301Document original1 = Uic301DocumentTest.createValidSample();
+        original1.validate(VALIDATOR);
+        original1.seal();
+        
+        final Uic301Document original2 = Uic301DocumentTest.createValidSample();
+        original2.validate(VALIDATOR);
+        original2.seal();
+
+        // TEST
+        Uic301Document  merged = Uic301Documents.merge(original1, original2, VALIDATOR);
+
+        // VERIFY
+        assertThat(merged.getErrorCount()).isEqualTo(0);
+        assertEquals(original1.getTotals().getList().get(0).getGrossCreditValue().add(original2.getTotals().getList().get(0).getGrossCreditValue()), 
+                merged.getTotals().getList().get(0).getGrossCreditValue());
     }
     
     static Uic301Document createValidSample() {

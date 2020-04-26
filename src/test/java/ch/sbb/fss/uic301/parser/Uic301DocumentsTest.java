@@ -114,5 +114,4 @@ public class Uic301DocumentsTest {
         assertThat(copy.getDocuments().get(0).getDetails().getList().size()).isEqualTo(testee.getDocuments().get(0).getDetails().getList().size());
     }
 
-
 }

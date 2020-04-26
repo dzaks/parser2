@@ -696,4 +696,8 @@ public final class Uic301Total implements ParsedLineItem, Sealable, Uic301Docume
         return line != null && (line.startsWith(G4) || line.startsWith(G4_DB) || line.startsWith(G5_ALLOCATION)
                 || line.startsWith(G5_ALLOCATION_DB) || line.startsWith(G5_ISSUES));
     }
+
+    public void setParsedLineNo(int parsedLineNo) {
+        this.parsedLineNo = parsedLineNo;
+    }
 }
