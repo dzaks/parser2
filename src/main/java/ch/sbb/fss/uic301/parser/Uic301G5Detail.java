@@ -1416,6 +1416,11 @@ public final class Uic301G5Detail implements Uic301Detail, Sealable {
     }
 
     @Override
+    public void changePeriodCounter(int i) {
+        this.period = Uic301Utils.changePeriodCounter(this.period, i);
+    }
+
+    @Override
     public int hashCode() {
         final int prime = 31;
         int result = 1;

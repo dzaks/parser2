@@ -1551,6 +1551,13 @@ public final class Uic301G4Detail implements Uic301Detail, Sealable {
     }
 
     @Override
+    public void changePeriodCounter(int i) {
+        this.period = Uic301Utils.changePeriodCounter(this.period, i);
+    }
+    
+
+    
+    @Override
     public boolean equals(Object obj) {
         if (this == obj) {
             return true;

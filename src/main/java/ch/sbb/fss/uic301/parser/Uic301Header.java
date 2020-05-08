@@ -15,6 +15,8 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import org.apache.commons.lang3.StringUtils;
+
 import ch.sbb.fss.uic301.parser.StatementPeriod.StatementPeriodStr;
 import ch.sbb.fss.uic301.parser.constraints.FixedLenDigitsStr;
 import ch.sbb.fss.uic301.parser.constraints.IdentifierStr;
@@ -297,6 +299,11 @@ public final class Uic301Header implements Sealable, Uic301DocumentItem {
 
     public void setRailUnionReceiving(String railUnionReceiving) {
         this.railUnionReceiving = railUnionReceiving;
+    }
+    
+    @Override
+    public void changePeriodCounter(int i) {
+        this.period = Uic301Utils.changePeriodCounter(this.period, i);
     }
 
     @Override

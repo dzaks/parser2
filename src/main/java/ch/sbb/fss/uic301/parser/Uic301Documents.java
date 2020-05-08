@@ -1,6 +1,7 @@
 package ch.sbb.fss.uic301.parser;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -271,5 +272,19 @@ public final class Uic301Documents implements Sealable {
         copy1.validate(validator);
         copy1.seal();
         return copy1;
+    }
+    
+    public static Uic301Document changePeriodCounter(Uic301Document doc, int counter, Validator validator) {
+        Uic301Document copy = new Uic301Document(copyHeader(doc.getHeader()), copyDetails(doc.getDetails()), copyTotals(doc.getTotals()));
+        changePeriodCounter(Collections.singletonList(copy.getHeader()), counter);
+        changePeriodCounter(copy.getDetails().getList(), counter);
+        changePeriodCounter(copy.getTotals().getList(), counter);
+        copy.validate(validator);
+        copy.seal();
+        return copy;
+    }
+    
+    public static void changePeriodCounter(List<? extends Uic301DocumentItem> items, int counter) {
+        items.forEach(i -> i.changePeriodCounter(counter));
     }
 }

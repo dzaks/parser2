@@ -12,4 +12,5 @@ public interface Uic301DocumentItem {
     
     public void setRailUnionReceiving(String ru);
 
+    void changePeriodCounter(int i);
 }

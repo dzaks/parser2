@@ -125,5 +125,16 @@ public final class Uic301Utils {
                     "Failed to add '" + filedName + "' of totals ");
         }
     }
+    
+    public static String changePeriodCounter(final String period, final int i) {
+        if(period == null || period.length() < 6) {
+            return period;
+        }
+        String periodCounter = "00";
+        if(i > 0 && i < 99) {
+           periodCounter = String.format("%02d", i);
+        }
+        return period.substring(0, 4)+ periodCounter;
+    }
 
 }

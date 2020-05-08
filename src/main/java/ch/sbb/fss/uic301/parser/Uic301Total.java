@@ -644,6 +644,15 @@ public final class Uic301Total implements ParsedLineItem, Sealable, Uic301Docume
             throw new IllegalStateException("The class is sealed. No more changes are allowed.");
         }
     }
+    
+    public void setParsedLineNo(int parsedLineNo) {
+        this.parsedLineNo = parsedLineNo;
+    }
+
+    @Override
+    public void changePeriodCounter(int i) {
+        this.period = Uic301Utils.changePeriodCounter(this.period, i);
+    }
 
     /**
      * Creates a new total by parsing a string.
@@ -695,9 +704,5 @@ public final class Uic301Total implements ParsedLineItem, Sealable, Uic301Docume
     public static boolean isTotal(final String line) {
         return line != null && (line.startsWith(G4) || line.startsWith(G4_DB) || line.startsWith(G5_ALLOCATION)
                 || line.startsWith(G5_ALLOCATION_DB) || line.startsWith(G5_ISSUES));
-    }
-
-    public void setParsedLineNo(int parsedLineNo) {
-        this.parsedLineNo = parsedLineNo;
     }
 }

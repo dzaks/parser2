@@ -139,6 +139,24 @@ public class Uic301DocumentTest {
                 merged.getTotals().getList().get(0).getGrossCreditValue());
     }
     
+    @Test
+    public void testChangePeriodCounter() {
+        // PREPARE
+        final Uic301Document original = Uic301DocumentTest.createValidSample();
+        original.validate(VALIDATOR);
+        original.seal();
+        
+        int counter = 3;
+
+        // TEST
+        Uic301Document  changed = Uic301Documents.changePeriodCounter(original, 3, VALIDATOR);
+
+        // VERIFY
+        assertThat(changed.getErrorCount()).isEqualTo(0);
+        changed.getHeader().getPeriod().endsWith(Integer.toString(counter));
+      
+    }
+    
     static Uic301Document createValidSample() {
         final Uic301Header header = Uic301HeaderTest.createValidSample();
         final Uic301Details details = Uic301DetailsTest.createValidSample();
