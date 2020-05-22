@@ -225,7 +225,7 @@ public final class Uic301Documents implements Sealable {
     }
 
     public static Uic301Document[] copyDocuments(List<Uic301Document> originals) {
-        List<Uic301Document> result = new ArrayList<Uic301Document>();
+        List<Uic301Document> result = new ArrayList<>();
         originals.forEach(d -> result.add(copyDocument(d)));
         return result.toArray(new Uic301Document[result.size()]);
     }
@@ -240,13 +240,13 @@ public final class Uic301Documents implements Sealable {
         return new Uic301Header(header);
     }
 
-    public static Uic301Details copyDetails(Uic301Details detailsToCopy) {
+    static Uic301Details copyDetails(Uic301Details detailsToCopy) {
         Uic301Details details = new Uic301Details();
         detailsToCopy.getList().forEach(d -> details.add(copyDetail(d)));
         return details;
     }
 
-    public static Uic301Detail copyDetail(Uic301Detail d) {
+    static Uic301Detail copyDetail(Uic301Detail d) {
         if (d instanceof Uic301G4Detail) {
             return new Uic301G4Detail((Uic301G4Detail) d);
         } else {
@@ -254,7 +254,7 @@ public final class Uic301Documents implements Sealable {
         }
     }
 
-    public static Uic301Totals copyTotals(Uic301Totals totals) {
+    static Uic301Totals copyTotals(Uic301Totals totals) {
         Uic301Totals copy = new Uic301Totals();
         totals.getList().forEach(t -> copy.add(new Uic301Total(t)));
         return copy;
@@ -266,6 +266,7 @@ public final class Uic301Documents implements Sealable {
         Uic301Document copy2 = new Uic301Document(copyHeader(doc2.getHeader()), copyDetails(doc2.getDetails()), copyTotals(doc2.getTotals()));
         copy2.getDetails().getList().forEach(d -> copy1.getDetails().add(d));
         copy1.getTotals().merge(copy2.getTotals().getList().get(0));
+        copy1.getHeader().merge(copy2.getHeader()); 
         AtomicInteger ai = new AtomicInteger(1);
         copy1.getDetails().getList().forEach(l -> l.setParsedLineNo(ai.getAndIncrement()));
         copy1.getTotals().getList().forEach(t -> t.setParsedLineNo(ai.getAndIncrement()));

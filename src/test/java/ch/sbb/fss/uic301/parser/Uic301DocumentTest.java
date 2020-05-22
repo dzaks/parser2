@@ -7,6 +7,7 @@ import static org.junit.Assert.assertTrue;
 import javax.validation.Validation;
 import javax.validation.Validator;
 
+import org.apache.commons.lang3.math.NumberUtils;
 import org.fuin.utils4j.JaxbUtils;
 import org.fuin.utils4j.Utils4J;
 import org.junit.Test;
@@ -134,6 +135,9 @@ public class Uic301DocumentTest {
         Uic301Document  merged = Uic301Documents.merge(original1, original2, VALIDATOR);
 
         // VERIFY
+        assertThat(merged.getHeader().getNoOfDetailPhrasesValue())//
+            .isEqualTo(NumberUtils.toInt(original1.getHeader().getNoOfDetailPhrases()) 
+                            + NumberUtils.toInt(original2.getHeader().getNoOfDetailPhrases()));
         assertThat(merged.getErrorCount()).isEqualTo(0);
         assertEquals(original1.getTotals().getList().get(0).getGrossCreditValue().add(original2.getTotals().getList().get(0).getGrossCreditValue()), 
                 merged.getTotals().getList().get(0).getGrossCreditValue());

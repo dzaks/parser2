@@ -1,5 +1,11 @@
 package ch.sbb.fss.uic301.parser;
 
+import static ch.sbb.fss.uic301.parser.Uic301Documents.copyDetails;
+import static ch.sbb.fss.uic301.parser.Uic301Documents.copyHeader;
+import static ch.sbb.fss.uic301.parser.Uic301Documents.copyTotals;
+
+import java.util.concurrent.atomic.AtomicInteger;
+
 import javax.validation.Validator;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.Unmarshaller;

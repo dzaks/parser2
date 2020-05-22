@@ -206,7 +206,7 @@ public final class Uic301Totals implements Sealable  {
      * @param totalToMerge
      *            Total to add.
      */
-    public final void merge(@NotNull final Uic301Total totalToMerge) {
+     void merge(@NotNull final Uic301Total totalToMerge) {
         assertNotSealed();
         if(list.isEmpty()) {
             list.add(totalToMerge);
