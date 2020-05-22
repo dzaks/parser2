@@ -4,7 +4,7 @@
 
 	<groupId>ch.sbb.fss</groupId>
 	<artifactId>fss-uic301-parser</artifactId>
-	<version>0.1.2-SNAPSHOT</version>
+	<version>0.1.3-SNAPSHOT</version>
 	<description>FSS UIC 301 Parser</description>
 
 	<distributionManagement>

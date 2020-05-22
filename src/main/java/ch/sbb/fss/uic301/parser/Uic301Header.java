@@ -5,7 +5,6 @@ import static ch.sbb.fss.uic301.parser.Uic301Utils.integerOf;
 import java.text.DecimalFormat;
 import java.util.Collections;
 import java.util.List;
-import java.util.function.IntUnaryOperator;
 
 import javax.validation.Validator;
 import javax.validation.constraints.NotNull;
@@ -16,10 +15,7 @@ import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.math.NumberUtils;
-
-import com.sun.javafx.binding.StringFormatter;
 
 import ch.sbb.fss.uic301.parser.StatementPeriod.StatementPeriodStr;
 import ch.sbb.fss.uic301.parser.constraints.FixedLenDigitsStr;
